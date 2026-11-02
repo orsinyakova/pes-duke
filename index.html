@@ -154,6 +154,26 @@ h1 em{font-style:normal;font-weight:inherit}
 .intro-pending .headline-word,.intro-pending [data-reveal]{visibility:hidden}
 @media(max-width:767px){.hero-action{width:100%;max-width:480px}.proof-list{column-gap:16px;row-gap:24px;width:100%;max-width:480px}.team-copy{justify-content:center}}
 
+
+/* Equal typography for all three proof headings. */
+.proof-list{width:min(100%,1040px);grid-template-columns:repeat(3,minmax(0,1fr))}
+.proof-item:last-child .proof-heading{align-items:center;padding-top:0}
+.proof-item:last-child .proof-icon{margin-top:0}
+@media(min-width:768px) and (max-width:1099px){.proof-list{width:min(100%,680px);grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}.proof-item:last-child{grid-column:1 / -1}}
+@media(max-width:767px){.proof-list{max-width:480px;grid-template-columns:repeat(2,minmax(0,1fr))}.proof-item:last-child .proof-heading{min-height:32px}.proof-item:last-child .proof-value{font-size:26px}}
+@media(max-width:359px){.proof-item:last-child .proof-heading{flex-direction:column;gap:8px;white-space:normal}}
+
+
+@media(max-width:767px){
+ .button--secondary:hover,.button--secondary:active{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
+}
+
+
+/* Icons balance the 28px proof headings; mobile headings are 26px. */
+.proof-icon{width:28px;height:28px;stroke-width:1.5}
+.proof-heading{gap:12px}
+@media(max-width:767px){.proof-icon{width:26px;height:26px}.proof-item:last-child .proof-icon{width:26px;height:26px}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.button:active{scale:none}}
 
 </style>
@@ -200,7 +220,8 @@ if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
      <span class="proof-label">«Хорошее место»</span><span class="proof-detail">Яндекс&nbsp;Карты</span>
     </a></li>
     <li class="proof-item"><a class="proof-link" href="https://pesdukegroom.ru/mastera" target="_blank" rel="noopener">
-     <div class="proof-heading"><svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.2 8.2 12 12M8.2 15.8 20 4"/></svg><div class="team-copy"><span class="team-prefix">Профессиональные</span><strong class="proof-value proof-value--word">pet-стилисты</strong></div></div>
+     <div class="proof-heading"><svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.2 8.2 12 12M8.2 15.8 20 4"/></svg><strong class="proof-value">Профессиональные</strong></div>
+     <span class="proof-label">pet-стилисты</span>
     </a></li>
    </ul>
   </div>
