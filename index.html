@@ -50,10 +50,10 @@ h1 em{font-style:normal;font-weight:inherit}
 .hero-action{grid-column:1 / span 7;grid-row:2;position:relative;z-index:1}
 .action-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .button{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:16px 32px;border:1px solid var(--olive);border-radius:999px;background:var(--olive);color:#FFFFFF;font-size:14px;line-height:1.5;font-weight:650;letter-spacing:.015em;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
-.button:hover{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
+.button:hover,.button:active{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
 .button:active{scale:.98}
-.button--secondary{background:transparent;border-color:var(--ink);color:var(--ink)}
-.button--secondary:hover{background:var(--ink);border-color:var(--ink);color:var(--forest)}
+.button--secondary{background:var(--page);border-color:var(--forest);color:var(--forest)}
+.button--secondary:hover,.button--secondary:active{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
 .location{display:inline-flex;align-items:center;gap:8px;min-height:24px;margin-top:24px;font-size:14px;line-height:1.5;color:var(--soft)}
 .location svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none;flex:none}
 .location:hover{text-decoration:underline;text-underline-offset:5px}
@@ -140,7 +140,7 @@ h1 em{font-style:normal;font-weight:inherit}
 .hero-action{grid-row:2}
 .proof-list{grid-row:3;margin-top:0}
 .button:not(.button--secondary){background:var(--olive);border-color:var(--olive);color:#FFFFFF;font-weight:700}
-.button:not(.button--secondary):hover{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
+.button:not(.button--secondary):hover,.button:not(.button--secondary):active{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
 @media(max-width:767px){.hero-action{grid-row:2}.proof-list{grid-row:3;margin-top:8px}}
 
 
@@ -164,9 +164,6 @@ h1 em{font-style:normal;font-weight:inherit}
 @media(max-width:359px){.proof-item:last-child .proof-heading{flex-direction:column;gap:8px;white-space:normal}}
 
 
-@media(max-width:767px){
- .button--secondary:hover,.button--secondary:active{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
-}
 
 
 /* Icons balance the 28px proof headings; mobile headings are 26px. */
