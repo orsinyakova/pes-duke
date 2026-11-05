@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#F7F6F0">
+<meta name="theme-color" content="#F7F6F1">
 <meta name="description" content="Pes Duke — груминг-салон в Москве. Стрижка и уход за шерстью собак и кошек. Запись онлайн.">
 <title>Стильный и здоровый питомец в PёsDuke</title>
 <style>
@@ -11,7 +11,7 @@
 @font-face{font-family:Anticva;src:url(assets/anticva-v2.otf) format("opentype");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:Pilowlava;src:url(assets/pilowlava-v2.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
 :root{
- --page:#F7F6F0;--forest:#234C34;--ink:#FFFFFF;--muted:rgba(255,255,255,.94);--soft:rgba(255,255,255,.88);--lime:#97E27E;--peach:#EAAB93;--line:rgba(35,76,52,.35);
+ --page:#F7F6F1;--forest:#234C34;--olive:#67744C;--ink:#FFFFFF;--muted:rgba(255,255,255,.94);--soft:rgba(255,255,255,.88);--peach:#EAAB93;--line:rgba(35,76,52,.35);
  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s6:24px;--s8:32px;--s12:48px;--s16:64px;--s24:96px;
  --max-width:1200px;--gutter:24px;--page-margin:40px
 }
@@ -33,7 +33,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--peach);outline-offs
 .brand img{width:100%;height:auto;filter:url(#brand-ink)}
 .desktop-nav{display:flex;align-items:center;gap:32px;font-size:14px;font-weight:500;line-height:1.5;margin-left:auto}
 .desktop-nav a,.phone{display:inline-flex;align-items:center;min-height:44px;padding-block:12px;transition:color .2s ease}
-.desktop-nav a:hover,.phone:hover{color:var(--lime)}
+.desktop-nav a:hover,.phone:hover{color:var(--peach)}
 .phone{font-size:16px;font-weight:550;white-space:nowrap;margin-left:16px}
 .menu-toggle{display:none;align-items:center;gap:12px;min-height:44px;padding:12px 16px;color:var(--forest);background:rgba(255,255,255,.88);backdrop-filter:blur(4px);border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:550}
 .menu-toggle svg{width:20px;height:20px}
@@ -49,8 +49,8 @@ h1 em{font-style:normal;font-weight:inherit}
 .hero-media:after{display:none}
 .hero-action{grid-column:1 / span 7;grid-row:2;position:relative;z-index:1}
 .action-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.button{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:16px 32px;border:1px solid var(--peach);border-radius:999px;background:var(--peach);color:var(--forest);font-size:14px;line-height:1.5;font-weight:650;letter-spacing:.015em;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
-.button:hover{background:var(--lime);border-color:var(--lime);color:var(--forest)}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:16px 32px;border:1px solid var(--olive);border-radius:999px;background:var(--olive);color:#FFFFFF;font-size:14px;line-height:1.5;font-weight:650;letter-spacing:.015em;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.button:hover{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
 .button:active{scale:.98}
 .button--secondary{background:transparent;border-color:var(--ink);color:var(--ink)}
 .button--secondary:hover{background:var(--ink);border-color:var(--ink);color:var(--forest)}
@@ -62,9 +62,9 @@ h1 em{font-style:normal;font-weight:inherit}
 .proof-link{display:block;border-radius:4px}
 .proof-heading{display:flex;align-items:center;gap:8px;min-height:36px;white-space:nowrap}
 .proof-icon{width:22px;height:22px;flex:none;stroke:var(--ink);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.proof-item:first-child .proof-icon{fill:var(--lime);stroke:var(--lime)}
+.proof-item:first-child .proof-icon{fill:var(--peach);stroke:var(--peach)}
 .proof-item:nth-child(2) .proof-icon{stroke:var(--peach)}
-.proof-item:last-child .proof-icon{stroke:var(--lime)}
+.proof-item:last-child .proof-icon{stroke:var(--peach)}
 .proof-value{font-size:28px;line-height:1.15;font-weight:500;letter-spacing:-.03em}
 .proof-value--word{display:block;font-size:17px;line-height:1.5;letter-spacing:-.015em}
 .team-copy{display:flex;flex-direction:column;gap:4px}
@@ -95,7 +95,7 @@ h1 em{font-style:normal;font-weight:inherit}
 .video-control svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .video-control[data-state="playing"] .play-icon,.video-control[data-state="paused"] .pause-icon{display:none}
 .proof-icon{stroke:var(--ink)}
-.proof-item:first-child .proof-icon{fill:var(--lime);stroke:var(--ink)}
+.proof-item:first-child .proof-icon{fill:var(--peach);stroke:var(--ink)}
 .proof-item:nth-child(2) .proof-icon{stroke:var(--ink)}
 .proof-item:nth-child(2) .proof-icon circle{fill:var(--peach)}
 .proof-item:last-child .proof-icon{stroke:var(--ink)}
@@ -139,8 +139,8 @@ h1 em{font-style:normal;font-weight:inherit}
 /* Compact hero: actions followed directly by trust statements. */
 .hero-action{grid-row:2}
 .proof-list{grid-row:3;margin-top:0}
-.button:not(.button--secondary){background:#B2BF9A;border-color:#B2BF9A;color:#FFFFFF;font-weight:700}
-.button:not(.button--secondary):hover{background:#647547;border-color:#647547;color:#FFFFFF}
+.button:not(.button--secondary){background:var(--olive);border-color:var(--olive);color:#FFFFFF;font-weight:700}
+.button:not(.button--secondary):hover{background:var(--forest);border-color:var(--forest);color:#FFFFFF}
 @media(max-width:767px){.hero-action{grid-row:2}.proof-list{grid-row:3;margin-top:8px}}
 
 
@@ -190,7 +190,6 @@ h1 em{font-style:normal;font-weight:inherit}
 @media(max-width:767px){.hero-poster{height:360px;object-position:100% 50%}}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.button:active{scale:none}}
-
 </style>
 
 <link rel="preload" as="image" href="assets/hero-poster-v2.jpg" fetchpriority="high">
