@@ -1,0 +1,33 @@
+/* Full-width footer with four columns in the established brand palette. */
+.site-footer{background:var(--page,#F7F6F1);color:#234C34;padding-top:24px;font:400 16px/1.6 Manrope,Arial,sans-serif;scroll-margin-top:24px}
+.footer-panel{background:#234C34;color:#F7F6F1;border-radius:48px 48px 0 0}
+.footer-inner{width:calc(100% - var(--page-margin,var(--gutter,40px))*2);max-width:1440px;margin-inline:auto;padding:48px 0 24px;display:grid;grid-template-columns:1.05fr 1fr 1fr 1.2fr;gap:32px 48px}
+.footer-brand-column,.footer-column{min-width:0}
+.footer-brand{display:inline-block;width:176px;max-width:100%;min-height:44px}
+.footer-brand img{display:block;width:100%;height:auto;filter:url(#brand-ink)}
+.footer-brand-description{font-size:16px;line-height:1.6;margin:16px 0 20px}
+.footer-column-title{font:500 14px/1.6 Manrope,Arial,sans-serif;color:#B4BF9E;margin:8px 0 20px}
+.footer-links{list-style:none;padding:0;margin:0}
+.footer-links a{display:flex;align-items:center;min-height:44px;font-size:16px;line-height:1.5;padding-block:8px}
+.footer-booking{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:10px 16px;border:1px solid #B4BF9E;border-radius:999px;font-size:14px;font-weight:600;line-height:1.5}
+.footer-booking svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;flex:none}
+.footer-address{font-size:16px;font-style:normal;line-height:1.6;margin:0 0 8px}
+.footer-phone{display:flex;align-items:center;min-height:44px;font-size:18px;line-height:1.5;font-weight:550;letter-spacing:-.015em;white-space:nowrap}
+.footer-map{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;line-height:1.5;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.footer-map svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;flex:none}
+.footer-socials{display:flex;flex-wrap:wrap;gap:4px 20px;margin-top:8px}
+.footer-social{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;line-height:1.5}
+.footer-social svg{width:20px;height:20px;flex:none}
+.footer-base{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;border-top:1px solid rgba(247,246,241,.25);padding-top:16px;font-size:14px;line-height:1.6}
+.footer-base p{margin:0}
+.designer-credit{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin:0 auto;padding:20px 20px 24px;font-size:14px;line-height:1.7;text-align:center;color:#234C34}
+.designer-credit>span{display:inline-flex;align-items:center;gap:8px}
+.designer-credit svg{width:16px;height:16px;fill:#8F563F;flex:none}
+.designer-credit a{font:400 18px/1.4 Anticva,Georgia,serif;letter-spacing:-.015em;padding:4px 0;border-bottom:1px solid #DDD8CF}
+.site-footer a{transition:color .2s,border-color .2s}
+.site-footer a:focus-visible{outline:3px solid #EAAB93;outline-offset:5px}
+.designer-credit a:focus-visible{outline-color:#8F563F}
+@media(hover:hover){.footer-panel a:hover{color:#EAAB93}.footer-links a:hover,.footer-phone:hover{text-decoration:underline;text-underline-offset:5px}.footer-booking:hover{border-color:#EAAB93}.designer-credit a:hover{color:#8F563F;border-color:#8F563F}}
+@media(max-width:1099px){.footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 48px;padding-top:40px}.footer-brand-column{grid-column:1;grid-row:1}.footer-contact{grid-column:2;grid-row:1}.footer-brand-description{margin-bottom:20px}}
+@media(max-width:767px){.site-footer{padding-top:16px;scroll-margin-top:16px}.footer-panel{border-radius:32px 32px 0 0}.footer-inner{width:calc(100% - 40px);padding-top:32px;gap:28px 20px}.footer-brand-column{grid-column:1/-1;grid-row:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 20px}.footer-brand{width:144px}.footer-brand-description{margin:0;flex:1;min-width:120px;font-size:14px}.footer-booking{flex-basis:100%;justify-content:flex-start;border:0;border-radius:0;padding:4px 0;min-height:44px}.footer-column-title{margin:0 0 12px}.footer-links a{font-size:14px;line-height:1.5}.footer-contact{grid-column:1/-1;grid-row:auto;border-top:1px solid rgba(247,246,241,.25);padding-top:24px}.footer-address{font-size:16px}.footer-socials{gap:4px 24px}.footer-base{gap:4px 20px}.designer-credit{max-width:360px;padding-top:20px}.designer-credit>span:first-child{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.site-footer *, .site-footer *::before,.site-footer *::after{transition:none!important;animation:none!important}}

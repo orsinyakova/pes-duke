@@ -11,7 +11,7 @@
 @font-face{font-family:Anticva;src:url(assets/anticva-v2.otf) format("opentype");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:Pilowlava;src:url(assets/pilowlava-v2.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
 :root{
- --page:#F7F6F1;--forest:#234C34;--olive:#67744C;--ink:#FFFFFF;--muted:rgba(255,255,255,.94);--soft:rgba(255,255,255,.88);--peach:#EAAB93;--line:rgba(35,76,52,.35);
+ --page:#F7F6F1;--forest:#234C34;--olive:#67744C;--sage:#B4BF9E;--card-peach:#F5E4D8;--card-surface:#FBF7F0;--muted-neutral:#686259;--neutral-line:#DDD8CF;--ink:#FFFFFF;--muted:rgba(255,255,255,.94);--soft:rgba(255,255,255,.88);--peach:#EAAB93;--line:rgba(35,76,52,.35);
  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s6:24px;--s8:32px;--s12:48px;--s16:64px;--s24:96px;
  --max-width:1200px;--gutter:24px;--page-margin:40px
 }
@@ -186,8 +186,209 @@ h1 em{font-style:normal;font-weight:inherit}
 .hero-media video[data-ready="true"]{opacity:1}
 @media(max-width:767px){.hero-poster{height:360px;object-position:100% 50%}}
 
+/* Popular services — open photographs and quiet typography, paired with the works section. */
+.popular-section{padding-block:96px;background:var(--page);color:var(--forest);scroll-margin-top:24px;--popular-ink:var(--forest)}
+.popular-shell{width:calc(100% - var(--page-margin)*2);max-width:1440px;margin-inline:auto}
+.popular-header{max-width:1100px;margin:0 auto 48px;text-align:center}
+.popular-heading{font:400 clamp(48px,5vw,72px)/1.12 Anticva,Georgia,serif;letter-spacing:-.025em;text-transform:uppercase;margin:0;text-wrap:balance}
+.popular-intro{font-size:18px;line-height:1.6;margin:24px auto 0}
+.popular-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0;padding:0 0 8px;list-style:none;scrollbar-width:none}
+.popular-item{min-width:0;display:flex}
+.popular-card{display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left}
+.popular-media{width:100%;margin:0}
+.popular-photo{aspect-ratio:1;overflow:hidden;background:var(--card-surface)}
+.popular-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:transform .5s cubic-bezier(.2,.65,.3,1)}
+.popular-item:nth-child(3) .popular-photo img{object-position:50% 40%}
+.popular-price{margin:12px 0 0;font-size:18px;font-weight:500;line-height:1.5;font-variant-numeric:tabular-nums}
+.popular-name{font:400 32px/1.2 Anticva,Georgia,serif;margin:24px 0 0;text-wrap:balance}
+.popular-description{flex:1;margin:16px 0 24px;max-width:35ch;font-size:16px;line-height:1.6;color:var(--muted-neutral);text-wrap:pretty}
+.popular-book{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:48px;padding:12px 24px;border:1px solid var(--forest);border-radius:999px;background:transparent;color:var(--forest);font-size:16px;line-height:1.5;font-weight:500;transition:background .25s ease,color .25s ease}
+.popular-book svg,.popular-nav svg,.popular-all svg,.quick-booking svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.popular-book:hover,.popular-book:active{background:var(--forest);color:#FFF}
+.popular-toolbar{display:none;align-items:center;justify-content:space-between;gap:24px;margin-bottom:16px}
+.popular-count{font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums}
+.popular-navigation{display:flex;gap:12px}
+.popular-nav{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;padding:12px;border:1px solid var(--popular-ink);border-radius:50%;color:var(--popular-ink);background:transparent;transition:background .22s ease,opacity .22s ease}
+.popular-nav:disabled{opacity:.35;cursor:default}.popular-nav:hover:not(:disabled){background:var(--page)}
+.popular-all{margin-top:48px;text-align:center}.popular-all a{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;font-size:16px;line-height:1.5;text-decoration:underline;text-underline-offset:5px}.popular-all a:hover{color:#8F563F}
+.popular-section a:focus-visible,.popular-section button:focus-visible,.popular-grid:focus-visible{outline:3px solid #8F563F;outline-offset:5px}
+.quick-booking{position:fixed;inset:0;width:min(560px,calc(100% - 32px));max-height:calc(100svh - 32px);margin:auto;padding:32px;border:1px solid var(--neutral-line);border-radius:24px;overflow:auto;background:#F7F6F1;color:var(--forest);box-shadow:0 24px 80px rgba(35,76,52,.15)}
+.quick-booking::backdrop{background:rgba(35,76,52,.45)}
+.quick-booking-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px}.quick-booking-eyebrow{font-size:14px;color:var(--muted-neutral)}
+.quick-booking-close{display:grid;place-items:center;width:44px;height:44px;padding:12px;border:1px solid var(--forest);border-radius:50%;color:var(--forest);background:transparent}
+.quick-booking h2{font:400 40px/1.15 Anticva,Georgia,serif;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.quick-booking-intro{font-size:16px;line-height:1.6;margin:16px 0 28px}.quick-booking-label{display:block;font-size:14px;font-weight:600;line-height:1.5;margin-bottom:12px}
+.quick-select-wrap{width:100%;min-width:0}.quick-select-wrap select{display:block;width:100%;min-height:56px;padding:12px 40px 12px 16px;border:1px solid var(--forest);border-radius:8px;font:400 16px/1.5 Manrope,Arial,sans-serif;color:var(--forest);background:#F7F6F1;cursor:pointer;text-overflow:ellipsis}
+.quick-booking-price{min-height:26px;margin:16px 0 24px;font-size:16px;font-weight:600}
+.quick-booking-next{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;min-height:56px;padding:16px 24px;border:1px solid var(--olive);border-radius:999px;background:var(--olive);color:#FFFFFF;font-size:14px;line-height:1.5;font-weight:600;transition:background .22s ease}
+.quick-booking-next[aria-disabled="true"]{opacity:.45;cursor:default}.quick-booking-next:not([aria-disabled="true"]):hover{background:var(--forest)}
+.quick-booking-note{margin:16px 0 0;text-align:center;font-size:14px;color:var(--muted-neutral)}.quick-booking a:focus-visible,.quick-booking button:focus-visible,.quick-booking select:focus-visible{outline:3px solid #8F563F;outline-offset:5px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.popular-card:hover .popular-photo img{transform:scale(1.025)}}
+@media(max-width:1099px){.popular-section{padding-block:80px}.popular-heading{font-size:56px}.popular-toolbar{display:flex}.popular-grid{display:flex;gap:24px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-inline:0}.popular-grid::-webkit-scrollbar{display:none}.popular-item{flex:0 0 calc((100% - 24px)/2);scroll-snap-align:start}.popular-name{font-size:28px}}
+@media(max-width:767px){.popular-section{padding-block:64px;scroll-margin-top:16px}.popular-header{margin-bottom:32px}.popular-heading{font-size:40px;line-height:1.15}.popular-intro{font-size:16px;margin-top:16px}.popular-grid{gap:16px}.popular-item{flex-basis:92%}.popular-name{font-size:28px}.popular-price{font-size:16px}.popular-all{margin-top:32px}.popular-nav{width:44px;height:44px;padding:11px}.quick-booking{padding:24px}.quick-booking h2{font-size:32px}.quick-booking-intro{margin-bottom:24px}}
+
+/* Real grooming results: square covers and a full-frame comparison gallery. */
+.works-section{padding-block:96px;background:var(--page);color:var(--forest);scroll-margin-top:24px}
+.works-shell{width:calc(100% - var(--page-margin)*2);max-width:1440px;margin-inline:auto}
+.works-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:24px;margin-bottom:48px}
+.works-heading{grid-column:2;margin:0;font:400 clamp(48px,5vw,72px)/1.12 Anticva,Georgia,serif;letter-spacing:-.025em;text-transform:uppercase}
+.works-all{grid-column:3;justify-self:end;display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:48px;padding:12px 24px;border:1px solid var(--forest);border-radius:999px;color:var(--forest);font-size:16px;font-weight:500;line-height:1.5;white-space:nowrap;transition:background .25s ease,color .25s ease}
+.works-all:hover,.works-all:active{background:var(--forest);color:#FFF}
+.works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;list-style:none;margin:0;padding:0}
+.works-item{min-width:0}.works-cover{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:var(--card-peach)}
+.works-cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .65s cubic-bezier(.2,.65,.3,1)}
+.works-cover-label{position:absolute;bottom:16px;left:16px;display:inline-flex;align-items:center;gap:16px;padding:8px 16px;border-radius:999px;background:var(--page);color:var(--forest);font-size:14px;line-height:1.5}
+.works-section svg,.works-viewer svg{flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.works-cover-label svg{transition:transform .3s ease}
+.works-caption{padding:24px 24px 0}.works-name{margin:0;font:400 32px/1.2 Anticva,Georgia,serif}.works-service{margin:8px 0 0;font-size:16px;line-height:1.6;color:var(--muted-neutral)}
+.works-section a:focus-visible,.works-viewer button:focus-visible{outline:3px solid #8F563F;outline-offset:5px}.works-cover:focus-visible{outline-offset:-5px;z-index:1}
+.works-viewer{position:fixed;inset:0;width:min(1100px,calc(100% - 32px));max-height:calc(100svh - 32px);margin:auto;padding:24px;border:1px solid var(--neutral-line);border-radius:24px;overflow:auto;overscroll-behavior:contain;background:var(--page);color:var(--forest)}
+.works-viewer::backdrop{background:rgba(35,76,52,.55)}
+.works-viewer-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px}.works-viewer-title{margin:0;font:400 32px/1.2 Anticva,Georgia,serif;text-wrap:balance}
+.works-viewer-master{margin:8px 0 0;font-size:16px;line-height:1.5;color:var(--muted-neutral)}
+.works-icon-button{display:inline-grid;place-items:center;flex:none;width:48px;height:48px;padding:12px;border:1px solid var(--forest);border-radius:50%;background:transparent;color:var(--forest);transition:background .25s ease,color .25s ease}
+.works-icon-button:hover:not(:disabled),.works-icon-button:active:not(:disabled){background:var(--forest);color:#FFF}.works-icon-button:disabled{opacity:.35;cursor:default}
+.works-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.works-pair figure{min-width:0;margin:0}.works-pair figcaption{margin-bottom:12px;font-size:16px;font-weight:600;line-height:1.5}
+.works-pair img{display:block;width:100%;height:auto;max-height:58svh;aspect-ratio:3/4;object-fit:contain;background:var(--card-surface)}
+.works-pair--single{grid-template-columns:minmax(0,1fr);width:min(100%,43.5svh);margin-inline:auto}
+.works-viewer-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:24px}.works-viewer-count{margin:0;font-size:16px;font-variant-numeric:tabular-nums;line-height:1.5}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.works-cover:hover img{transform:scale(1.025)}.works-cover:hover .works-cover-label svg{transform:translateX(3px)}}
+@media(max-width:1099px){.works-section{padding-block:80px}.works-heading{font-size:clamp(48px,5.5vw,56px)}.works-header{gap:16px}.works-all{padding-inline:20px}.works-name{font-size:28px}}
+@media(max-width:767px){.works-section{padding-block:64px;scroll-margin-top:16px}.works-header{display:flex;flex-direction:column;gap:24px;margin-bottom:32px}.works-heading{font-size:40px;line-height:1.15}.works-grid{grid-template-columns:1fr;row-gap:32px}.works-caption{padding:24px 0 0}.works-viewer{padding:16px;border-radius:20px}.works-viewer-top{position:sticky;top:-16px;z-index:2;gap:16px;margin:-16px -16px 24px;padding:16px;background:var(--page)}.works-viewer-title{font-size:26px}.works-pair{grid-template-columns:1fr;gap:24px}.works-pair img{max-height:none}.works-icon-button{width:44px;height:44px;padding:11px}.works-viewer-nav{position:sticky;bottom:-16px;z-index:2;margin:24px -16px -16px;padding:16px;border-top:1px solid var(--neutral-line);background:var(--page)}}
+
+@media(max-width:767px){.works-pair--single{width:100%}}
+@media(max-width:359px){.works-viewer-title{font-size:22px}}
+
+/* Team — open portrait cards in the salon palette. */
+.team-section{padding-block:96px;background:var(--sage);color:var(--team-ink);--team-ink:#234C34;--team-muted:var(--forest);--team-cream:#F7F6F1;--team-gap:24px;--team-per-view:4;scroll-margin-top:24px}
+.team-shell{width:calc(100% - var(--page-margin)*2);max-width:1440px;margin-inline:auto}
+.team-header{max-width:760px;margin:0 auto 48px;text-align:center}
+.team-heading{margin:0;font-family:Anticva,Georgia,serif;font-weight:400;font-size:clamp(48px,5vw,72px);line-height:1.12;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance}
+.team-intro{max-width:560px;margin:24px auto 0;font-size:18px;line-height:1.6;text-wrap:pretty}
+.team-toolbar{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:16px}
+.team-carousel[data-all-visible="true"] .team-toolbar{display:none}
+.team-count{font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums}
+.team-nav{display:flex;gap:12px}
+.team-nav-button{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;padding:12px;border:1px solid rgba(35,76,52,.5);border-radius:50%;color:var(--team-ink);background:transparent;transition:background .22s ease,border-color .22s ease,opacity .22s ease}
+.team-nav-button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.team-nav-button:hover:not(:disabled){background:var(--team-cream);border-color:var(--team-ink)}
+.team-nav-button:disabled{opacity:.35;cursor:default}
+.team-track{display:flex;align-items:stretch;gap:var(--team-gap);overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;list-style:none;margin:0;padding:8px 0 12px;scroll-padding-inline:0}
+.team-track::-webkit-scrollbar{display:none}
+.team-item{flex:0 0 calc((100% - (var(--team-per-view) - 1)*var(--team-gap))/var(--team-per-view));min-width:0;scroll-snap-align:start}
+.team-card{display:flex;flex-direction:column;height:100%;min-width:0;text-align:center;transition:transform .3s ease}
+.team-portrait{display:grid;place-items:center;aspect-ratio:1;margin:0;overflow:hidden;border-radius:8px;background:var(--team-cream);border:1px solid rgba(35,76,52,.12)}
+.team-portrait-content{width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.65,.3,1)}
+.team-portrait img{display:block;object-fit:cover}
+.team-portrait--initial .team-portrait-content{display:flex;align-items:center;justify-content:center;font-family:Pilowlava,serif;font-size:clamp(100px,15vw,216px);line-height:1;color:var(--team-ink);user-select:none}
+.team-portrait--sage{background:var(--page)}
+.team-portrait--peach{background:#F0CBB9}
+.team-name{margin:24px 0 0;font-family:Manrope,Arial,sans-serif;font-size:28px;font-weight:500;letter-spacing:-.025em;line-height:1.25}
+.team-role{color:var(--team-muted);margin:8px 0 0;font-size:14px;font-weight:500;line-height:1.5}
+.team-description{flex:1;max-width:33ch;margin:16px auto 24px;font-size:16px;line-height:1.6;text-wrap:pretty}
+.team-link{align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:48px;padding:12px 24px;border:1px solid var(--olive);border-radius:999px;background:var(--olive);color:#FFFFFF;font-size:14px;font-weight:550;line-height:1.5;transition:background .22s ease,transform .22s ease,box-shadow .22s ease}
+.team-link svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .22s ease}
+.team-link:hover{background:var(--forest)}
+.team-section a:focus-visible,.team-section button:focus-visible,.team-track:focus-visible{outline:3px solid var(--team-ink);outline-offset:5px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.team-card:hover{transform:translateY(-4px)}.team-card:hover .team-portrait-content{transform:scale(1.025)}.team-link:hover{transform:translateY(-1px)}.team-link:hover svg{transform:translateX(2px)}}
+@media(max-width:1099px){.team-section{--team-per-view:2;padding-block:80px}.team-heading{font-size:56px}.team-portrait--initial .team-portrait-content{font-size:180px}}
+@media(max-width:767px){.team-section{--team-gap:16px;--team-per-view:1.12;padding-block:64px;scroll-margin-top:16px}.team-header{margin-bottom:32px}.team-heading{font-size:40px;line-height:1.15}.team-intro{font-size:16px;line-height:1.6;margin-top:16px;max-width:34ch}.team-toolbar{margin-bottom:16px}.team-nav-button{width:44px;height:44px;padding:11px}.team-name{font-size:26px;margin-top:24px}.team-description{font-size:16px;max-width:28ch;margin-bottom:24px}.team-portrait--initial .team-portrait-content{font-size:clamp(120px,42vw,200px)}.team-link{gap:12px;padding-inline:20px}}
+
+/* Loyalty — the milk and peach surfaces of the popular services. */
+.loyalty-section{padding-block:96px;background:var(--page);color:var(--forest);scroll-margin-top:24px}
+.loyalty-shell{width:calc(100% - var(--page-margin)*2);max-width:1440px;margin-inline:auto}
+.loyalty-header{max-width:1240px;margin:0 auto 48px;text-align:center}
+.loyalty-heading{font:400 clamp(48px,5vw,72px)/1.12 Anticva,Georgia,serif;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance;margin:0}
+.loyalty-intro{font-size:18px;line-height:1.6;margin:24px 0 0}
+.loyalty-feature{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center;background:var(--card-peach);border-radius:24px;padding:48px;margin-bottom:24px}
+.loyalty-feature-copy{min-width:0;max-width:600px}
+.loyalty-label{display:inline-flex;align-items:center;min-height:36px;padding:6px 16px;border-radius:999px;background:var(--page);font-size:14px;font-weight:550;line-height:1.5}
+.loyalty-feature h3{font:400 clamp(44px,4.4vw,64px)/1.12 Anticva,Georgia,serif;letter-spacing:-.025em;margin:24px 0 16px;text-transform:uppercase}
+.loyalty-feature-description{font-size:18px;line-height:1.6;max-width:34ch;margin:0}
+.loyalty-feature-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:24px}
+.loyalty-book,.loyalty-promotions-toggle{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:14px 24px;border:1px solid var(--olive);border-radius:999px;background:var(--olive);color:#FFFFFF;font-size:14px;font-weight:600;line-height:1.5;transition:background .22s,border-color .22s,transform .22s}
+.loyalty-book svg,.loyalty-contact svg,.loyalty-review-link svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.loyalty-contact,.loyalty-review-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:550;line-height:1.5;text-decoration:underline;text-underline-offset:5px}
+.loyalty-feature-note{max-width:52ch;font-size:14px;line-height:1.6;margin:24px 0 0}
+.duke-card-preview{width:min(100%,360px);justify-self:center;min-height:280px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:var(--card-surface);border:1px solid var(--forest);border-radius:24px;transform:rotate(3deg)}
+.duke-card-preview img{display:block;width:128px;height:auto;filter:url(#brand-ink)}
+.duke-card-title{font:400 36px/1.1 Anticva,Georgia,serif;letter-spacing:-.02em}
+.duke-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:14px;line-height:1.5}
+.duke-card-mark{display:grid;place-items:center;flex:none;width:64px;height:64px;border:1px solid var(--forest);border-radius:50%;font:400 28px/1 Anticva,Georgia,serif}
+.loyalty-promotions{margin:0;min-width:0}
+.loyalty-promotions-toggle{display:none;list-style:none;cursor:pointer;background:var(--card-peach);border-color:var(--forest);color:var(--forest)}
+.loyalty-promotions-toggle::-webkit-details-marker{display:none}
+.loyalty-promotions-toggle svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.loyalty-promotions-hide{display:none}
+.loyalty-promotions[open] .loyalty-promotions-show{display:none}
+.loyalty-promotions[open] .loyalty-promotions-hide{display:inline}
+.loyalty-promotions[open] .loyalty-promotions-toggle svg{transform:rotate(180deg)}
+.loyalty-promotions-toggle:focus-visible{outline:3px solid #8F563F;outline-offset:5px}
+.loyalty-offers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
+.loyalty-offer{min-width:0;display:flex}
+.loyalty-offer-card{display:flex;flex-direction:column;width:100%;background:var(--card-peach);border-radius:24px;padding:24px}
+.loyalty-offer-value{display:block;background:var(--card-surface);border-radius:12px;padding:24px 16px;font:400 clamp(48px,4vw,60px)/1.05 Anticva,Georgia,serif;letter-spacing:-.025em;text-align:center;white-space:nowrap}
+.loyalty-offer h3{font:550 20px/1.35 Manrope,Arial,sans-serif;letter-spacing:-.015em;margin:24px 0 12px}
+.loyalty-offer p{font-size:16px;line-height:1.6;margin:0;text-wrap:pretty}
+.loyalty-review-link{margin-top:auto;padding-top:16px}
+.loyalty-section a:focus-visible{outline:3px solid #8F563F;outline-offset:5px}
+@media(hover:hover){.loyalty-book:hover{background:var(--forest);border-color:var(--forest)}.loyalty-contact:hover,.loyalty-review-link:hover{color:#8F563F}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.loyalty-book:hover{transform:translateY(-1px)}}
+@media(max-width:1199px){.loyalty-feature{padding:40px;gap:40px}.loyalty-offers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1099px){.loyalty-section{padding-block:80px}.loyalty-heading{font-size:56px}}
+@media(max-width:899px){.loyalty-feature{grid-template-columns:minmax(0,1fr);gap:40px}.loyalty-feature-copy{max-width:none}.duke-card-preview{width:min(100%,340px)}}
+@media(max-width:767px){.loyalty-promotions-toggle{display:flex}.loyalty-promotions[open] .loyalty-offers{margin-top:16px}.loyalty-section{padding-block:64px;scroll-margin-top:16px}.loyalty-header{margin-bottom:32px}.loyalty-heading{font-size:40px;line-height:1.15}.loyalty-intro{font-size:16px;margin-top:16px}.loyalty-feature{padding:24px;border-radius:20px;gap:32px;margin-bottom:16px}.loyalty-feature h3{font-size:44px;margin-top:20px}.loyalty-feature-description{font-size:16px}.loyalty-feature-actions{gap:12px;margin-top:24px}.loyalty-book,.loyalty-promotions-toggle{width:100%;padding-inline:16px}.loyalty-contact{margin-inline:auto}.loyalty-feature-note{margin-top:16px}.duke-card-preview{padding:20px;gap:20px;transform:none;border-radius:16px;aspect-ratio:auto;min-height:220px}.duke-card-preview img{width:112px}.duke-card-title{font-size:32px}.duke-card-bottom{gap:12px}.duke-card-mark{width:52px;height:52px;font-size:24px}.loyalty-offers{grid-template-columns:minmax(0,1fr);gap:16px}.loyalty-offer-card{padding:20px;border-radius:20px}.loyalty-offer-value{padding:20px;font-size:56px}.loyalty-offer h3{font-size:22px;margin-top:20px}.loyalty-offer p{font-size:16px}}
+
+/* Reviews — one centered carousel, with bone-shaped rating marks. */
+.reviews-section{padding-block:96px;background:var(--forest);color:#F7F6F1;scroll-margin-top:24px;--review-olive:var(--forest);--review-muted:var(--muted-neutral);--review-surface:var(--page);--review-line:var(--neutral-line);--review-width:min(440px,calc(100vw - 96px))}
+.reviews-shell{width:calc(100% - var(--page-margin)*2);max-width:1440px;margin-inline:auto}
+.reviews-header{max-width:760px;margin:0 auto 24px;text-align:center}
+.reviews-heading{font:400 clamp(48px,5vw,72px)/1.12 Anticva,Georgia,serif;letter-spacing:-.025em;text-transform:uppercase;margin:0}
+.reviews-rating{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;margin-top:16px;font-size:14px;line-height:1.5}
+.reviews-rating-value{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
+.reviews-rating svg{width:24px;height:24px;fill:#EAAB93}
+.reviews-rating:hover{text-decoration:underline;text-underline-offset:5px}
+.reviews-intro{margin:8px 0 0;font-size:16px;line-height:1.6;color:var(--page);text-wrap:pretty}
+.reviews-carousel{min-width:0}
+.reviews-grid{display:flex;align-items:stretch;gap:24px;list-style:none;margin:0;padding:56px calc((100% - var(--review-width))/2) 48px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-inline:calc((100% - var(--review-width))/2);scrollbar-width:none}
+.reviews-grid::-webkit-scrollbar{display:none}
+.review-item{display:flex;min-width:0;flex:0 0 var(--review-width);scroll-snap-align:center}
+.review-card{display:flex;flex-direction:column;width:100%;min-height:360px;padding:32px;border-radius:28px;background:var(--review-surface);color:var(--forest);transform:translateY(16px) scale(.94);transform-origin:50% 50%;transition:transform .35s ease,background .35s ease}
+.review-item.is-active .review-card{background:#F7F6F1;transform:translateY(-24px)}
+.review-meta{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.review-bones{display:flex;gap:5px;flex:none;color:#8F563F}
+.review-bones svg{width:24px;height:24px;fill:currentColor}
+.review-meta time{font-size:14px;line-height:1.5;color:var(--review-muted);white-space:nowrap}
+.review-quote{flex:1;margin:28px 0 36px;font-size:16px;line-height:1.65;font-weight:400;text-wrap:pretty}
+.review-quote p{margin:0}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-initials{display:grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid var(--review-line);border-radius:50%;color:var(--review-olive);font-size:14px;font-weight:600}
+.review-author-info{min-width:0}
+.review-author h3{font-size:16px;font-weight:600;line-height:1.5;margin:0;overflow-wrap:break-word}
+.review-source{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-bottom:-10px;font-size:14px;line-height:1.5;color:var(--review-muted)}
+.review-source svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.review-source:hover{color:var(--forest);text-decoration:underline;text-underline-offset:4px}
+.reviews-navigation{display:flex;justify-content:center;gap:16px;margin-top:8px}
+.reviews-nav-button{display:inline-flex;align-items:center;justify-content:center;width:96px;min-height:52px;padding:12px 24px;border:1px solid #F7F6F1;border-radius:999px;color:#F7F6F1;background:transparent;transition:background .22s ease,color .22s ease,opacity .22s ease}
+.reviews-nav-button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.reviews-nav-button[data-review-next]{background:#F7F6F1;color:var(--forest)}
+.reviews-nav-button:hover:not(:disabled){background:#EAAB93;color:var(--forest);border-color:#EAAB93}
+.reviews-nav-button:disabled{opacity:.35;cursor:default}
+.reviews-carousel-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.reviews-action{margin-top:32px;text-align:center}
+.reviews-all{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:56px;padding:16px 28px;border:1px solid #F7F6F1;border-radius:999px;background:transparent;color:#F7F6F1;font-size:14px;font-weight:600;line-height:1.5;transition:background .22s ease,color .22s ease}
+.reviews-all svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .22s ease}
+.reviews-all:hover{background:#F7F6F1;color:var(--forest)}
+.reviews-section a:focus-visible,.reviews-section button:focus-visible,.reviews-grid:focus-visible{outline:3px solid #EAAB93;outline-offset:5px}
+.review-source:focus-visible{outline-color:#8F563F!important}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.reviews-all:hover svg{transform:translateX(2px)}}
+@media(max-width:1099px){.reviews-section{padding-block:80px}.reviews-heading{font-size:56px}}
+@media(max-width:767px){.reviews-section{padding-block:64px;scroll-margin-top:16px}.reviews-header{margin-bottom:16px}.reviews-heading{font-size:40px;line-height:1.15}.reviews-grid{gap:16px;padding-block:48px 32px}.review-card{padding:24px;min-height:360px;border-radius:24px}.review-item.is-active .review-card{transform:translateY(-16px)}.review-meta{flex-direction:column;align-items:flex-start;gap:12px}.review-bones{gap:4px}.review-bones svg{width:20px;height:20px}.review-quote{margin:24px 0}.reviews-intro{max-width:30ch;margin-inline:auto}.reviews-navigation{margin-top:8px;gap:12px}.reviews-nav-button{width:80px;min-height:48px;padding:12px 20px}.reviews-action{margin-top:24px}.reviews-all{width:100%;padding-inline:20px}.reviews-rating{margin-top:12px}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.button:active{scale:none}}
+
 </style>
+<link rel="stylesheet" href="assets/footer.css?v=columns-1">
 
 <link rel="preload" as="image" href="assets/hero-poster-v2.jpg" fetchpriority="high">
 </head>
@@ -198,10 +399,10 @@ h1 em{font-style:normal;font-weight:inherit}
  <div class="container header-inner">
   <a class="brand" href="./index.html" aria-label="Pes Duke — на главную"><img src="assets/logo-v2.webp" width="600" height="267" alt="Pes Duke"></a>
   <nav class="desktop-nav" aria-label="Основное меню">
-   <a href="https://n1254086.yclients.com/" target="_blank" rel="noopener">Услуги</a>
-   <a href="https://pesdukegroom.ru/mastera" target="_blank" rel="noopener">Pet-стилисты</a>
-   <a href="https://yandex.ru/maps/org/pyosduke/190293664931/reviews/" target="_blank" rel="noopener">Отзывы</a>
-   <a href="https://yandex.ru/maps/org/pyosduke/190293664931/" target="_blank" rel="noopener">Контакты</a>
+   <a href="./services.html">Услуги</a>
+   <a href="#team">Pet-стилисты</a>
+   <a href="#reviews">Отзывы</a>
+   <a href="#contacts">Контакты</a>
   </nav>
   <a class="button header-booking" href="https://n1254086.yclients.com/" target="_blank" rel="noopener">Записаться<span class="header-booking-extra">&nbsp;онлайн</span></a>
   <button class="menu-toggle" type="button" aria-haspopup="dialog" aria-controls="mobile-menu" aria-expanded="false">Меню<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
@@ -226,19 +427,303 @@ h1 em{font-style:normal;font-weight:inherit}
      <div class="proof-heading"><svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 14-2 7 6-3 6 3-2-7"/><circle cx="12" cy="9" r="6"/><path d="m10 9 1.4 1.4L14 7.8"/></svg><strong class="proof-value">2026</strong></div>
      <span class="proof-label">«Хорошее место»</span><span class="proof-detail">Яндекс&nbsp;Карты</span>
     </a></li>
-    <li class="proof-item"><a class="proof-link" href="https://pesdukegroom.ru/mastera" target="_blank" rel="noopener">
+    <li class="proof-item"><a class="proof-link" href="#team">
      <div class="proof-heading"><svg class="proof-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.2 8.2 12 12M8.2 15.8 20 4"/></svg><strong class="proof-value">Профессиональные</strong></div>
      <span class="proof-label">pet-стилисты</span>
     </a></li>
    </ul>
   </div>
  </section>
+ <section class="popular-section" id="popular-services" aria-labelledby="popular-title">
+  <div class="popular-shell">
+   <header class="popular-header" data-popular-reveal><h2 class="popular-heading" id="popular-title">Популярные услуги</h2><p class="popular-intro">Выберите уход и&nbsp;запишитесь онлайн.</p></header>
+   <div class="popular-toolbar"><span class="popular-count" aria-live="polite" aria-atomic="true">1 из&nbsp;3</span><div class="popular-navigation"><button class="popular-nav" type="button" data-popular-prev aria-controls="popular-list" aria-label="Предыдущая услуга" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6"/></svg></button><button class="popular-nav" type="button" data-popular-next aria-controls="popular-list" aria-label="Следующая услуга"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button></div></div>
+   <ul class="popular-grid" id="popular-list" tabindex="0" aria-label="Три услуги для быстрой записи">
+    <li class="popular-item" data-popular-reveal>
+     <article class="popular-card" aria-labelledby="popular-dogs">
+      <figure class="popular-media"><div class="popular-photo"><img src="assets/services/spitz-grooming.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Шпиц после комплексного ухода в салоне"></div></figure>
+      <h3 class="popular-name" id="popular-dogs">Груминг собак</h3>
+      <p class="popular-price">от 2 800 ₽</p>
+      <p class="popular-description">Купание, вычёсывание и стрижка с учётом породы. Подберите комплекс для своего питомца.</p>
+      <a class="popular-book" href="https://n1254086.yclients.com/company/1146740/personal/select-services?o=" target="_blank" rel="noopener" data-booking-kind="dogs" aria-haspopup="dialog" aria-controls="quick-booking" aria-label="Записаться: Груминг собак">Записаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+     </article>
+    </li>
+    <li class="popular-item" data-popular-reveal>
+     <article class="popular-card" aria-labelledby="popular-shedding">
+      <figure class="popular-media"><div class="popular-photo"><img src="assets/services/cat-express-shedding.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Кошка рядом с вычесанной шерстью после экспресс-линьки"></div></figure>
+      <h3 class="popular-name" id="popular-shedding">Экспресс-линька</h3>
+      <p class="popular-price">1 500 ₽ · 30 мин</p>
+      <p class="popular-description">Уход за шерстью в период линьки: вычёсывание и удаление лишнего подшёрстка.</p>
+      <a class="popular-book" href="https://n1254086.yclients.com/company/1146740/personal/select-services?o=s17240887" target="_blank" rel="noopener" aria-label="Записаться: Экспресс-линька">Записаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+     </article>
+    </li>
+    <li class="popular-item" data-popular-reveal>
+     <article class="popular-card" aria-labelledby="popular-cats">
+      <figure class="popular-media"><div class="popular-photo"><img src="assets/services/cat-grooming.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Пушистая трёхцветная кошка на груминг-столе"></div></figure>
+      <h3 class="popular-name" id="popular-cats">Груминг кошек</h3>
+      <p class="popular-price">от 3 100 ₽</p>
+      <p class="popular-description">Купание, вычёсывание и гигиена. Выберите подходящую процедуру для кошки или кота.</p>
+      <a class="popular-book" href="https://n1254086.yclients.com/company/1146740/personal/select-services?o=" target="_blank" rel="noopener" data-booking-kind="cats" aria-haspopup="dialog" aria-controls="quick-booking" aria-label="Записаться: Груминг кошек">Записаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+     </article>
+    </li>
+   </ul>
+   <div class="popular-all" data-popular-reveal><a href="./services.html?category=all">Все&nbsp;услуги и&nbsp;цены<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div>
+  </div>
+ </section>
+ <section class="works-section" id="before-after" aria-labelledby="works-title">
+  <div class="works-shell">
+   <div class="works-header" data-works-reveal>
+    <h2 class="works-heading" id="works-title">До / после</h2>
+    <a class="works-all" href="#works-list" aria-haspopup="dialog" aria-controls="works-viewer" data-works-all>Смотреть все<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+   </div>
+   <ul class="works-grid" id="works-list">
+    <li class="works-item" data-works-reveal>
+     <article aria-labelledby="work-spitz-title">
+      <a class="works-cover" href="assets/works/spitz-after.webp" data-work-title="Комплекс для шпица" data-work-breed="Шпиц" data-work-before="assets/works/spitz-before.webp" aria-label="Шпиц — посмотреть до и после комплексного ухода" aria-haspopup="dialog" aria-controls="works-viewer">
+       <img src="assets/works/spitz-after.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Кремовый шпиц после комплексного ухода">
+       <span class="works-cover-label" aria-hidden="true">До / после<svg viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <div class="works-caption"><h3 class="works-name" id="work-spitz-title">Шпиц</h3><p class="works-service">Комплексный уход</p></div>
+     </article>
+    </li>
+    <li class="works-item" data-works-reveal>
+     <article aria-labelledby="work-maltipoo-title">
+      <a class="works-cover" href="assets/works/maltipoo-after.webp" data-work-title="Комплекс для мальтипу" data-work-breed="Мальтипу" data-work-before="assets/works/maltipoo-before.webp" aria-label="Мальтипу — посмотреть до и после комплексного ухода" aria-haspopup="dialog" aria-controls="works-viewer">
+       <img src="assets/works/maltipoo-after.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Мальтипу после комплексного ухода">
+       <span class="works-cover-label" aria-hidden="true">До / после<svg viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <div class="works-caption"><h3 class="works-name" id="work-maltipoo-title">Мальтипу</h3><p class="works-service">Комплексный уход</p></div>
+     </article>
+    </li>
+    <li class="works-item" data-works-reveal>
+     <article aria-labelledby="work-poodle-title">
+      <a class="works-cover" href="assets/works/poodle-after.webp" data-work-title="Комплекс для пуделя" data-work-breed="Пудель" data-work-before="assets/works/poodle-before.webp" aria-label="Пудель — посмотреть до и после комплексного ухода" aria-haspopup="dialog" aria-controls="works-viewer">
+       <img src="assets/works/poodle-after.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Пудель после комплексного ухода">
+       <span class="works-cover-label" aria-hidden="true">До / после<svg viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <div class="works-caption"><h3 class="works-name" id="work-poodle-title">Пудель</h3><p class="works-service">Комплексный уход</p></div>
+     </article>
+    </li>
+   </ul>
+  </div>
+ </section>
+ <section class="team-section" id="team" aria-labelledby="team-title">
+  <div class="team-shell">
+   <div class="team-header" data-team-reveal>
+    <h2 class="team-heading" id="team-title">Наша команда</h2>
+    <p class="team-intro">Познакомьтесь с&nbsp;мастерами и&nbsp;выберите, кому доверить уход за&nbsp;питомцем.</p>
+   </div>
+   <div class="team-carousel" role="region" aria-roledescription="карусель" aria-label="Мастера Pes Duke">
+    <div class="team-toolbar">
+     <span class="team-count" aria-live="polite" aria-atomic="true">1–3 из&nbsp;4</span>
+     <div class="team-nav" aria-label="Листать команду">
+      <button class="team-nav-button" type="button" data-team-prev aria-controls="team-list" aria-label="Предыдущие специалисты" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6"/></svg></button>
+      <button class="team-nav-button" type="button" data-team-next aria-controls="team-list" aria-label="Следующие специалисты"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
+     </div>
+    </div>
+    <ul class="team-track" id="team-list" tabindex="0" aria-label="Четыре pet-стилиста Pes Duke">
+    <li class="team-item" data-team-reveal>
+     <article class="team-card" aria-labelledby="team-elena">
+      <div class="team-portrait"><img class="team-portrait-content" src="assets/team/elena.webp" width="483" height="483" loading="lazy" decoding="async" alt="Елена с&nbsp;собакой"></div>
+      <h3 class="team-name" id="team-elena">Елена</h3>
+      <p class="team-role">Pet-стилист</p>
+      <p class="team-description">Находит подход к&nbsp;питомцам любого темперамента, даже если они не&nbsp;любят процедуры.</p>
+      <a class="team-link" href="https://n1254086.yclients.com/company/1146740/personal/select-master/master-info/1146740/3689232?o=" target="_blank" rel="noopener" aria-label="Профиль и запись к Елене в Yclients">Записаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+     </article>
+    </li>
+    <li class="team-item" data-team-reveal>
+     <article class="team-card" aria-labelledby="team-kristina">
+      <div class="team-portrait team-portrait--initial team-portrait--sage" role="img" aria-label="Кристина — фотография пока не добавлена"><span class="team-portrait-content" aria-hidden="true">К</span></div>
+      <h3 class="team-name" id="team-kristina">Кристина</h3>
+      <p class="team-role">Pet-стилист</p>
+      <p class="team-description">Специализируется на&nbsp;кошках и&nbsp;работает с&nbsp;собаками всех пород.</p>
+      <a class="team-link" href="https://n1254086.yclients.com/company/1146740/personal/select-master/master-info/1146740/5090301?o=" target="_blank" rel="noopener" aria-label="Профиль и запись к Кристине в Yclients">Записаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+     </article>
+    </li>
+    <li class="team-item" data-team-reveal>
+     <article class="team-card" aria-labelledby="team-alina">
+      <div class="team-portrait team-portrait--initial team-portrait--cream" role="img" aria-label="Алина — фотография пока не добавлена"><span class="team-portrait-content" aria-hidden="true">А</span></div>
+      <h3 class="team-name" id="team-alina">Алина</h3>
+      <p class="team-role">Pet-стилист</p>
+      <p class="team-description">Аккуратно стрижёт пуделей и&nbsp;помогает щенкам освоиться на&nbsp;груминге.</p>
+      <a class="team-link" href="https://n1254086.yclients.com/company/1146740/personal/select-master/master-info/1146740/6155115?o=" target="_blank" rel="noopener" aria-label="Профиль и запись к Алине в Yclients">Записаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+     </article>
+    </li>
+    <li class="team-item" data-team-reveal>
+     <article class="team-card" aria-labelledby="team-darya">
+      <div class="team-portrait team-portrait--initial team-portrait--peach" role="img" aria-label="Дарья — фотография пока не добавлена"><span class="team-portrait-content" aria-hidden="true">Д</span></div>
+      <h3 class="team-name" id="team-darya">Дарья</h3>
+      <p class="team-role">Pet-стилист</p>
+      <p class="team-description">Помогает на&nbsp;первом груминге и&nbsp;подсказывает, как&nbsp;ухаживать за&nbsp;шерстью дома.</p>
+      <a class="team-link" href="https://n1254086.yclients.com/company/1146740/personal/select-master/master-info/1146740/5704242?o=" target="_blank" rel="noopener" aria-label="Профиль и запись к Дарье в Yclients">Записаться<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+     </article>
+    </li>
+    </ul>
+   </div>
+  </div>
+ </section>
+ <section class="loyalty-section" id="loyalty" aria-labelledby="loyalty-title">
+  <div class="loyalty-shell">
+   <div class="loyalty-header" data-loyalty-reveal>
+    <h2 class="loyalty-heading" id="loyalty-title">Программа лояльности</h2>
+    <p class="loyalty-intro">Кешбэк за&nbsp;процедуры и&nbsp;скидки на&nbsp;уход.</p>
+   </div>
+   <div class="loyalty-feature" data-loyalty-reveal>
+    <div class="loyalty-feature-copy">
+     <span class="loyalty-label">Накопительная карта</span>
+     <h3>Кешбэк 5%</h3>
+     <p class="loyalty-feature-description">Duke Coin начисляется с&nbsp;каждой процедуры.</p>
+     <div class="loyalty-feature-actions"><a class="loyalty-book" href="https://n1254086.yclients.com/" target="_blank" rel="noopener">Записаться онлайн<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="loyalty-contact" href="tel:+79175556617">Уточнить условия</a></div>
+     <p class="loyalty-feature-note">При&nbsp;использовании акционных предложений Duke Coin не&nbsp;начисляется.</p>
+    </div>
+    <div class="duke-card-preview" aria-hidden="true">
+     <img src="assets/logo-v2.webp" width="600" height="267" loading="lazy" decoding="async" alt="">
+     <span class="duke-card-title">Duke Coin</span>
+     <div class="duke-card-bottom"><span>Накопительная<br>карта Pes&nbsp;Duke</span><span class="duke-card-mark">5%</span></div>
+    </div>
+   </div>
+   <details class="loyalty-promotions" open>
+    <summary class="loyalty-promotions-toggle" aria-controls="loyalty-offers"><span class="loyalty-promotions-show">Показать все акции</span><span class="loyalty-promotions-hide">Скрыть акции</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+   <ul class="loyalty-offers" id="loyalty-offers" aria-label="Скидки и бонусы">
+    <li class="loyalty-offer" data-loyalty-reveal><article class="loyalty-offer-card"><span class="loyalty-offer-value">10%</span><h3>Каждый десятый визит</h3><p>Каждое десятое посещение нашего салона со&nbsp;скидкой&nbsp;10%.</p></article></li>
+    <li class="loyalty-offer" data-loyalty-reveal><article class="loyalty-offer-card"><span class="loyalty-offer-value">10%</span><h3>Щенкам до&nbsp;6&nbsp;месяцев</h3><p>Скидка 10% на&nbsp;уход для&nbsp;самых маленьких гостей салона.</p></article></li>
+    <li class="loyalty-offer" data-loyalty-reveal><article class="loyalty-offer-card"><span class="loyalty-offer-value">500&nbsp;₽</span><h3>С&nbsp;другом дешевле</h3><p>Порекомендуйте наш салон знакомым и&nbsp;получите скидку 500&nbsp;₽ на&nbsp;одну услугу.</p></article></li>
+    <li class="loyalty-offer" data-loyalty-reveal><article class="loyalty-offer-card"><span class="loyalty-offer-value">500&nbsp;₽</span><h3>За&nbsp;отзыв</h3><p>Поделитесь своим мнением о&nbsp;салоне на&nbsp;Яндекс&nbsp;Картах и&nbsp;получите скидку 500&nbsp;₽ на&nbsp;наши услуги.</p><a class="loyalty-review-link" href="https://yandex.ru/maps/org/pyosduke/190293664931/reviews/" target="_blank" rel="noopener">Оставить отзыв<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article></li>
+   </ul>
+   </details>
+  </div>
+ </section>
+ <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
+  <div class="reviews-shell">
+   <header class="reviews-header" data-reviews-reveal>
+    <h2 class="reviews-heading" id="reviews-title">Отзывы</h2>
+    <a class="reviews-rating" href="https://yandex.ru/maps/org/pyosduke/190293664931/reviews/" target="_blank" rel="noopener" aria-label="Рейтинг 5,0 на Яндекс Картах"><span class="reviews-rating-value">5,0</span><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><span>на&nbsp;Яндекс Картах</span></a>
+    <p class="reviews-intro">Фрагменты отзывов владельцев питомцев.</p>
+   </header>
+   <div class="reviews-carousel" role="region" aria-roledescription="карусель" aria-label="Отзывы клиентов Pes Duke">
+   <ul class="reviews-grid" id="reviews-list" tabindex="0" aria-label="Шесть отзывов о Pes Duke">
+    <li class="review-item" data-reviews-reveal>
+     <article class="review-card" aria-labelledby="review-author-1">
+      <div class="review-meta"><span class="review-bones" role="img" aria-label="Оценка: 5 из 5"><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg></span><time datetime="2026-06-10">10 июня 2026</time></div>
+      <blockquote class="review-quote" cite="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=62gknbur2z6mqhph6bed6b4trm"><p>… Огромное спасибо мастеру Кристине! Работала аккуратно и быстро, кошка не нервничала, хотя Брю обычно боится чужих. …</p></blockquote>
+      <footer class="review-author"><span class="review-initials" aria-hidden="true">ЕБ</span><div class="review-author-info"><h3 id="review-author-1">Елизавета Бедретдинова</h3><a class="review-source" href="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=62gknbur2z6mqhph6bed6b4trm" target="_blank" rel="noopener" aria-label="Оригинал отзыва: Елизавета Бедретдинова">Яндекс&nbsp;Карты<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19"/></svg></a></div></footer>
+     </article>
+    </li>
+    <li class="review-item" data-reviews-reveal>
+     <article class="review-card" aria-labelledby="review-author-2">
+      <div class="review-meta"><span class="review-bones" role="img" aria-label="Оценка: 5 из 5"><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg></span><time datetime="2026-10-24">24 октября 2026</time></div>
+      <blockquote class="review-quote" cite="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=a73vca0bbuwwzaz4b6bkztyacc"><p>… Мастер Алина - богиня😍 огромная благодарность Алине за её мастерство, наш пёс был прекрасный, а после стрижки просто шедевр😍 …</p></blockquote>
+      <footer class="review-author"><span class="review-initials" aria-hidden="true">EP</span><div class="review-author-info"><h3 id="review-author-2">Ekaterina Pashinova</h3><a class="review-source" href="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=a73vca0bbuwwzaz4b6bkztyacc" target="_blank" rel="noopener" aria-label="Оригинал отзыва: Ekaterina Pashinova">Яндекс&nbsp;Карты<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19"/></svg></a></div></footer>
+     </article>
+    </li>
+    <li class="review-item" data-reviews-reveal>
+     <article class="review-card" aria-labelledby="review-author-3">
+      <div class="review-meta"><span class="review-bones" role="img" aria-label="Оценка: 5 из 5"><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg></span><time datetime="2026-10-04">4 октября 2026</time></div>
+      <blockquote class="review-quote" cite="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=mwvepgcukkv94vgg0xey0mqtdm"><p>… Мы не пожалели! С первых минут Дарья нашла подход к собаке. …</p></blockquote>
+      <footer class="review-author"><span class="review-initials" aria-hidden="true">НК</span><div class="review-author-info"><h3 id="review-author-3">Наталья&nbsp;К.</h3><a class="review-source" href="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=mwvepgcukkv94vgg0xey0mqtdm" target="_blank" rel="noopener" aria-label="Оригинал отзыва: Наталья К.">Яндекс&nbsp;Карты<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19"/></svg></a></div></footer>
+     </article>
+    </li>
+    <li class="review-item" data-reviews-reveal>
+     <article class="review-card" aria-labelledby="review-author-4">
+      <div class="review-meta"><span class="review-bones" role="img" aria-label="Оценка: 5 из 5"><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg></span><time datetime="2025-06-22">22 июня 2025</time></div>
+      <blockquote class="review-quote" cite="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=5fqr2kjw05d0hq6k2zjnj2kaug"><p>… Все очень доброжелательные, мастер Елена сразу нашла подход к моей кошке, процедура прошла спокойно. …</p></blockquote>
+      <footer class="review-author"><span class="review-initials" aria-hidden="true">ТЧ</span><div class="review-author-info"><h3 id="review-author-4">Таисия Черненко</h3><a class="review-source" href="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=5fqr2kjw05d0hq6k2zjnj2kaug" target="_blank" rel="noopener" aria-label="Оригинал отзыва: Таисия Черненко">Яндекс&nbsp;Карты<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19"/></svg></a></div></footer>
+     </article>
+    </li>
+    <li class="review-item" data-reviews-reveal>
+     <article class="review-card" aria-labelledby="review-author-5">
+      <div class="review-meta"><span class="review-bones" role="img" aria-label="Оценка: 5 из 5"><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg></span><time datetime="2026-07-10">10 июля 2026</time></div>
+      <blockquote class="review-quote" cite="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=jhd7dh2wzzhfr7ekpmd9vv03fw"><p>… Все мастера отличные, стриглись почти у всех. Всегда учитывают пожелания. Очень чисто и стильно. …</p></blockquote>
+      <footer class="review-author"><span class="review-initials" aria-hidden="true">ЕШ</span><div class="review-author-info"><h3 id="review-author-5">Елена&nbsp;Ш</h3><a class="review-source" href="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=jhd7dh2wzzhfr7ekpmd9vv03fw" target="_blank" rel="noopener" aria-label="Оригинал отзыва: Елена Ш">Яндекс&nbsp;Карты<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19"/></svg></a></div></footer>
+     </article>
+    </li>
+    <li class="review-item" data-reviews-reveal>
+     <article class="review-card" aria-labelledby="review-author-6">
+      <div class="review-meta"><span class="review-bones" role="img" aria-label="Оценка: 5 из 5"><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg><svg viewBox="-2 -2 28 28" aria-hidden="true"><path transform="rotate(-35 12 12)" d="M7.1 7.8h9.8c.2-2 1.4-3.2 2.9-3.2 1.8 0 3.2 1.4 3.2 3.2 0 1.2-.6 2.3-1.6 2.8 1 .6 1.6 1.6 1.6 2.8 0 1.8-1.4 3.2-3.2 3.2-1.5 0-2.7-1.2-2.9-3.2H7.1c-.2 2-1.4 3.2-2.9 3.2C2.4 16.6 1 15.2 1 13.4c0-1.2.6-2.2 1.6-2.8C1.6 10.1 1 9 1 7.8 1 6 2.4 4.6 4.2 4.6c1.5 0 2.7 1.2 2.9 3.2Z"/></svg></span><time datetime="2025-06-25">25 июня 2025</time></div>
+      <blockquote class="review-quote" cite="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=1hz78akdp3r4zncbfkpa6x0u74"><p>… Всегда учитывают все пожелания по стрижке, в случае чего без вопросов корректируют) Очень внимательно и аккуратно относятся к питомцам. …</p></blockquote>
+      <footer class="review-author"><span class="review-initials" aria-hidden="true">АФ</span><div class="review-author-info"><h3 id="review-author-6">Анастасия Фёдорова</h3><a class="review-source" href="https://yandex.ru/maps/org/190293664931/reviews?reviews%5BpublicId%5D=1hz78akdp3r4zncbfkpa6x0u74" target="_blank" rel="noopener" aria-label="Оригинал отзыва: Анастасия Фёдорова">Яндекс&nbsp;Карты<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19"/></svg></a></div></footer>
+     </article>
+    </li>
+   </ul>
+   <div class="reviews-navigation" aria-label="Листать отзывы"><button class="reviews-nav-button" type="button" data-review-prev aria-controls="reviews-list" aria-label="Предыдущий отзыв"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6"/></svg></button><button class="reviews-nav-button" type="button" data-review-next aria-controls="reviews-list" aria-label="Следующий отзыв"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button></div>
+   <span class="reviews-carousel-status" role="status" aria-live="polite" aria-atomic="true"></span>
+   </div>
+   <div class="reviews-action" data-reviews-reveal><a class="reviews-all" href="https://yandex.ru/maps/org/pyosduke/190293664931/reviews/" target="_blank" rel="noopener">Смотреть все&nbsp;отзывы<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+  </div>
+ </section>
 </main>
+<footer class="site-footer" id="contacts" aria-label="Контакты и меню Pes Duke">
+ <div class="footer-panel">
+  <div class="footer-inner">
+   <div class="footer-brand-column">
+    <a class="footer-brand" href="./index.html" aria-label="Pes Duke — на главную"><img src="assets/logo-v2.webp" width="600" height="267" loading="lazy" decoding="async" alt="Pes Duke"></a>
+    <p class="footer-brand-description">Груминг-салон<br>для собак и&nbsp;кошек</p>
+    <a class="footer-booking" href="https://n1254086.yclients.com/" target="_blank" rel="noopener">Записаться онлайн<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+   </div>
+   <nav class="footer-column" aria-labelledby="footer-services-title">
+    <h2 class="footer-column-title" id="footer-services-title">Услуги</h2>
+    <ul class="footer-links">
+     <li><a href="./services.html?category=full">Груминг собак</a></li>
+     <li><a href="./services.html?category=cats">Груминг кошек</a></li>
+     <li><a href="./services.html?category=hygiene">Гигиена и&nbsp;уход</a></li>
+     <li><a href="./services.html?category=all">Все услуги и&nbsp;цены</a></li>
+    </ul>
+   </nav>
+   <nav class="footer-column" aria-labelledby="footer-salon-title">
+    <h2 class="footer-column-title" id="footer-salon-title">Салон</h2>
+    <ul class="footer-links">
+     <li><a href="#popular-services">Популярные услуги</a></li>
+     <li><a href="#team">Pet-стилисты</a></li>
+     <li><a href="#loyalty">Программа лояльности</a></li>
+     <li><a href="#reviews">Отзывы</a></li>
+     <li><a href="#contacts">Контакты</a></li>
+    </ul>
+   </nav>
+   <div class="footer-column footer-contact">
+    <h2 class="footer-column-title">Контакты</h2>
+    <address class="footer-address">Москва,<br>проезд Шелихова,&nbsp;7</address>
+    <a class="footer-phone" href="tel:+79175556617">+7&nbsp;917&nbsp;555-66-17</a>
+    <a class="footer-map" href="https://yandex.ru/maps/org/pyosduke/190293664931/" target="_blank" rel="noopener">Мы на&nbsp;Яндекс&nbsp;Картах<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h11v11M19 5 5 19"/></svg></a>
+    <div class="footer-socials" aria-label="Социальные сети салона">
+    <a class="footer-social" href="https://t.me/pesduke_groom" target="_blank" rel="noopener" aria-label="Pes Duke в Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m21.6 3.4-3.1 16.3c-.2 1.1-.8 1.4-1.6.9l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 7c.4-.3-.1-.5-.6-.2L6.4 13.7l-4.7-1.5c-1-.3-1-1 .2-1.4L20.3 3c.9-.3 1.6.2 1.3.4Z"/></svg>Telegram</a>
+    <a class="footer-social" href="https://www.instagram.com/pesduke.groom/" target="_blank" rel="noopener" aria-label="Pes Duke в Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.9" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+   </div>
+   </div>
+   <div class="footer-base"><p>©&nbsp;2026 Pes&nbsp;Duke</p></div>
+  </div>
+ </div>
+ <p class="designer-credit"><span>Сайт сделан с&nbsp;любовью<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 3.4 12.7A5.7 5.7 0 0 1 12 5.2a5.7 5.7 0 0 1 8.6 7.5Z"/></svg></span> <span>дизайнером</span> <a href="https://portfolio.sinyakova.art/" target="_blank" rel="noopener">Ольгой Синяковой</a></p>
+</footer>
+
 <dialog class="mobile-menu" id="mobile-menu" aria-label="Меню Pes Duke">
  <div class="menu-top"><a class="brand" href="./index.html" aria-label="Pes Duke — на главную"><img src="assets/logo-v2.webp" width="600" height="267" alt="Pes Duke"></a><button class="close-menu" type="button" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button></div>
- <nav class="mobile-nav" aria-label="Мобильное меню"><a href="https://n1254086.yclients.com/" target="_blank" rel="noopener">Услуги</a><a href="https://pesdukegroom.ru/mastera" target="_blank" rel="noopener">Pet-стилисты</a><a href="https://yandex.ru/maps/org/pyosduke/190293664931/reviews/" target="_blank" rel="noopener">Отзывы</a><a href="https://yandex.ru/maps/org/pyosduke/190293664931/" target="_blank" rel="noopener">Контакты</a><a href="tel:+79175556617">+7 917 555-66-17</a></nav>
+ <nav class="mobile-nav" aria-label="Мобильное меню"><a href="./services.html">Услуги</a><a href="#team">Pet-стилисты</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a><a href="tel:+79175556617">+7 917 555-66-17</a></nav>
  <a class="button" href="https://n1254086.yclients.com/" target="_blank" rel="noopener">ЗАПИСАТЬСЯ ОНЛАЙН</a>
 </dialog>
+<dialog class="works-viewer" id="works-viewer" aria-labelledby="works-viewer-title" aria-describedby="works-viewer-master">
+ <div class="works-viewer-top">
+  <div><h2 class="works-viewer-title" id="works-viewer-title">До / после</h2><p class="works-viewer-master" id="works-viewer-master" hidden></p></div>
+  <button class="works-icon-button" type="button" data-works-close aria-label="Закрыть галерею" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+ </div>
+ <div class="works-pair">
+  <figure><figcaption>До</figcaption><img data-works-before width="960" height="1280" decoding="async" alt=""></figure>
+  <figure><figcaption>После</figcaption><img data-works-after width="960" height="1280" decoding="async" alt=""></figure>
+ </div>
+ <div class="works-viewer-nav">
+  <button class="works-icon-button" type="button" data-works-prev aria-label="Предыдущая работа"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6"/></svg></button>
+  <p class="works-viewer-count" data-works-count aria-live="polite" aria-atomic="true"></p>
+  <button class="works-icon-button" type="button" data-works-next aria-label="Следующая работа"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
+ </div>
+</dialog>
+<dialog class="quick-booking" id="quick-booking" aria-labelledby="quick-booking-title">
+ <div class="quick-booking-top"><span class="quick-booking-eyebrow">Онлайн-запись</span><button class="quick-booking-close" type="button" aria-label="Закрыть выбор услуги"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button></div>
+ <h2 id="quick-booking-title">Груминг собак</h2><p class="quick-booking-intro" id="quick-booking-description">Выберите породу и&nbsp;вариант ухода.</p>
+ <label class="quick-booking-label" for="quick-service">Порода и&nbsp;вариант ухода</label><div class="quick-select-wrap"><select id="quick-service" aria-describedby="quick-booking-description"><option value="">Выбрать породу</option></select></div>
+ <p class="quick-booking-price" role="status" aria-live="polite"></p>
+ <a class="quick-booking-next" href="https://n1254086.yclients.com/company/1146740/personal/select-services?o=" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">Продолжить запись<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+ <p class="quick-booking-note">Продолжим запись в&nbsp;Yclients.</p>
+</dialog>
+<script id="quick-booking-data" type="application/json">{"dogs":[{"id":"17240451","name":"Австралийская овчарка ( комплекс )","price":"6 800 ₽"},{"id":"21503780","name":"Австралийский хиллер","price":"5 400 ₽"},{"id":"17240452","name":"Акита Ину","price":"7 100 ₽"},{"id":"17240453","name":"Алабай","price":"9 000 ₽"},{"id":"17240454","name":"Аляскинский маламут","price":"9 000 ₽"},{"id":"17240455","name":"Американская акита","price":"8 000 ₽"},{"id":"17240456","name":"Американский булли","price":"5 500 ₽"},{"id":"17240457","name":"Американский бульдог","price":"5 900 ₽"},{"id":"17240458","name":"Американский водяной спаниель","price":"6 700 ₽"},{"id":"17240459","name":"Американский кокер спаниель","price":"6 400 ₽"},{"id":"17240460","name":"Американский питбультерьер","price":"5 600 ₽"},{"id":"17240461","name":"Американский стаффордширский терьер","price":"5 600 ₽"},{"id":"17240462","name":"Английский бульдог","price":"5 200 ₽"},{"id":"17240463","name":"Английский кокер-спаниель","price":"6 300 ₽"},{"id":"17240464","name":"Английский спрингер-спаниель","price":"5 900 ₽"},{"id":"17240465","name":"Басенджи","price":"4 500 ₽"},{"id":"17240466","name":"Бассет-Хаунд","price":"5 200 ₽"},{"id":"17240467","name":"Бедлингтон терьер","price":"5 800 ₽"},{"id":"17240468","name":"Без породы","price":"3 000 – 11 500 ₽"},{"id":"19199389","name":"Бельгийская овчарка (Малинуа) (Комплекс)","price":"5 800 ₽"},{"id":"17240469","name":"Бернский зенненхунд","price":"9 000 ₽"},{"id":"17240470","name":"Бивер йоркширского терьера","price":"4 900 ₽"},{"id":"17240471","name":"Бигль","price":"4 600 ₽"},{"id":"17240472","name":"Бишон фризе","price":"6 100 ₽"},{"id":"17404900","name":"Бордер терьер (комплекс)","price":"5 300 ₽"},{"id":"17404899","name":"Бордер терьер тримминг (полный комплекс с триммингом)","price":"6 500 ₽"},{"id":"17240473","name":"Бордер-колли","price":"5 900 ₽"},{"id":"17404904","name":"Бордоский дог","price":"7 200 ₽"},{"id":"18602186","name":"Бостон терьер (Комплекс)","price":"4 100 ₽"},{"id":"17240474","name":"Брабансон","price":"4 000 ₽"},{"id":"17240475","name":"Бретонский Бассет","price":"4 500 ₽"},{"id":"17240476","name":"Бретонский Бассет (полный комплекс с триммингом)","price":"6 200 ₽"},{"id":"18156625","name":"Бриар (комплекс)","price":"12 000 ₽"},{"id":"17240477","name":"Брюссельский гриффон","price":"4 200 ₽"},{"id":"17240478","name":"Брюссельский гриффон (полный комплекс с триммингом)","price":"5 500 ₽"},{"id":"17404891","name":"Бульмастив (комплекс)","price":"6 200 ₽"},{"id":"17240479","name":"Бультерьер","price":"4 900 ₽"},{"id":"17404834","name":"Веймаранер (комплекс)","price":"5 600 ₽"},{"id":"17240480","name":"Вельш-Корги","price":"5 100 ₽"},{"id":"17240481","name":"Венгерская овчарка Комондор","price":"13 000 ₽"},{"id":"17240482","name":"Вест Хайленд Уайт Терьер","price":"5 500 ₽"},{"id":"17240483","name":"Вест Хайленд Уайт Терьер (полный комплекс с триммингом)","price":"6 200 ₽"},{"id":"17240484","name":"Вольпино итальяно","price":"5 000 ₽"},{"id":"17240485","name":"Далматинец","price":"5 700 ₽"},{"id":"17240486","name":"Денди-димонт терьер","price":"4 900 ₽"},{"id":"17240487","name":"Денди-димонт терьер (полный комплекс с триммингом)","price":"6 200 ₽"},{"id":"17240488","name":"Джек-рассел терьер","price":"4 500 ₽"},{"id":"17240489","name":"Джек-рассел терьер (полный комплекс с триммингом)","price":"5 700 ₽"},{"id":"17240490","name":"Доберман","price":"5 800 ₽"},{"id":"17240491","name":"Золотистый ретривер","price":"7 300 ₽"},{"id":"17240492","name":"Ирландский водяной спаниель","price":"7 200 ₽"},{"id":"17240493","name":"Ирландский терьер","price":"6 100 ₽"},{"id":"17240494","name":"Ирландский терьер (полный комплекс с триммингом)","price":"7 200 ₽"},{"id":"17404887","name":"Йоркипу (комплекс)","price":"5 200 ₽"},{"id":"17240495","name":"Йоркширский терьер","price":"4 700 ₽"},{"id":"17240496","name":"Кавалер кинг Чарльз спаниель","price":"5 300 ₽"},{"id":"17404892","name":"Кавапу (комплекс)","price":"5 700 ₽"},{"id":"17240497","name":"Кане-корсо","price":"6 700 ₽"},{"id":"17240498","name":"Карликовый пинчер","price":"4 400 ₽"},{"id":"17240499","name":"Карликовый пудель","price":"5 800 ₽"},{"id":"17240500","name":"Кеесхонд","price":"7 500 ₽"},{"id":"17240501","name":"Керн терьер","price":"4 800 ₽"},{"id":"17240502","name":"Керн терьер (полный комплек+тримминг)","price":"6 100 ₽"},{"id":"17240503","name":"Керри-брю-терьер","price":"7 100 ₽"},{"id":"17240504","name":"Керри-брю-терьер (полный комплекс+тримминг)","price":"8 900 ₽"},{"id":"17240505","name":"Китайская хохлатая (голая)","price":"3 700 ₽"},{"id":"17240506","name":"Китайская хохлатая (пуховая)","price":"4 900 ₽"},{"id":"17240507","name":"Кламбер спаниель","price":"6 500 ₽"},{"id":"21407910","name":"Коббердог (Комплекс)","price":"7 600 ₽"},{"id":"17404835","name":"Кокапу (комплекс)","price":"5 700 ₽"},{"id":"17240508","name":"Колли","price":"7 500 ₽"},{"id":"17240509","name":"Королевский пудель большой","price":"9 700 ₽"},{"id":"21498292","name":"Котон-де-тулеар (Магаданский бишон) (Комплекс)","price":"5 700 ₽"},{"id":"17240510","name":"Лабрадор-ретривер","price":"6 100 ₽"},{"id":"17240511","name":"Лабрадудль","price":"7 600 ₽"},{"id":"17404839","name":"Лаготто-романьоло (комплекс)","price":"6 000 ₽"},{"id":"17404810","name":"Левретка (комплекс)","price":"3 200 ₽"},{"id":"17404812","name":"Левхен (Бишон-лион) (комплекс)","price":"5 100 ₽"},{"id":"17404847","name":"Леонбергер (комплекс)","price":"11 001 ₽"},{"id":"17240512","name":"Мальтийская болонка","price":"5 100 ₽"},{"id":"17240513","name":"Мальтипу","price":"5 600 ₽"},{"id":"17240514","name":"Мареммо-Абруццкая Овчарка","price":"8 700 ₽"},{"id":"30217647","name":"Мини бультерьер (Комплекс)","price":"4 000 ₽"},{"id":"17404821","name":"Миниатюрная американская овчарка (комплекс)","price":"5 100 ₽"},{"id":"17240515","name":"Миттельшнауцер","price":"6 100 ₽"},{"id":"17240516","name":"Миттельшнауцер ( полный комплекс+тримминг)","price":"7 600 ₽"},{"id":"17240517","name":"Мопс","price":"3 900 ₽"},{"id":"17240518","name":"Московский дракон","price":"4 000 ₽"},{"id":"19898333","name":"Немецкий боксёр","price":"5 700 ₽"},{"id":"17404854","name":"Немецкий дог (комплекс)","price":"6 900 ₽"},{"id":"17240588","name":"Ненецкая оленегонная лайка (оленегонный шпиц)","price":"6 200 ₽"},{"id":"17404880","name":"Новошотландский ретривер (комплекс)","price":"5 000 ₽"},{"id":"17240519","name":"Норвич терьер","price":"4 800 ₽"},{"id":"17240520","name":"Норвич терьер ( полный комплекс+тримминг)","price":"6 100 ₽"},{"id":"17240521","name":"Норфолк терьер","price":"5 200 ₽"},{"id":"17240522","name":"Норфолк терьер (полный комплекс+тримминг)","price":"6 200 ₽"},{"id":"17240523","name":"Ньюфаундленд","price":"10 400 ₽"},{"id":"17240524","name":"Овчарка","price":"7 900 ₽"},{"id":"17240525","name":"Папийон (Континентальный той-спаниель)","price":"4 400 ₽"},{"id":"17240526","name":"Парсон рассел терьер","price":"4 900 ₽"},{"id":"17240527","name":"Парсон-Рассел терьер (комплекс с триммингом)","price":"6 100 ₽"},{"id":"17240528","name":"Пекинес","price":"5 100 ₽"},{"id":"17240529","name":"Петербургская орхидея","price":"4 800 ₽"},{"id":"17404829","name":"Поденко Ибиценко (Ивисская борзая) (комплекс)","price":"5 700 ₽"},{"id":"17240531","name":"Помски","price":"5 900 ₽"},{"id":"17240532","name":"Пудель малый","price":"6 200 ₽"},{"id":"17240533","name":"Пудель-пойтнер","price":"6 500 ₽"},{"id":"17240534","name":"Пшеничный терьер","price":"7 000 ₽"},{"id":"17240535","name":"Ризеншнауцер","price":"8 100 ₽"},{"id":"17240536","name":"Ризеншнауцер (тримминг)","price":"12 600 ₽"},{"id":"17240537","name":"Родезийский риджбек","price":"6 200 ₽"},{"id":"17240538","name":"Ротвейлер","price":"7 300 ₽"},{"id":"17240539","name":"Русская псовая борзая","price":"6 700 ₽"},{"id":"19371138","name":"Русская салонная болонка (Комплекс)","price":"4 700 ₽"},{"id":"17240540","name":"Русский спаниель","price":"5 500 ₽"},{"id":"17240541","name":"Русский той длинношерстный","price":"3 700 ₽"},{"id":"17240542","name":"Самоед","price":"7 900 ₽"},{"id":"17240543","name":"Сенбернар","price":"10 000 ₽"},{"id":"17240544","name":"Сеттер","price":"6 900 ₽"},{"id":"17240545","name":"Сиба-Ину","price":"5 100 ₽"},{"id":"17240546","name":"Силихем терьер","price":"5 800 ₽"},{"id":"17240547","name":"Силихем терьер (полный комплекс+тримминг)","price":"6 600 ₽"},{"id":"17240548","name":"Скай терьер","price":"5 300 ₽"},{"id":"17240549","name":"Скай терьер (полный комплекс+тримминг)","price":"6 400 ₽"},{"id":"17240550","name":"Скотч-терьер","price":"5 400 ₽"},{"id":"17240551","name":"Скотч-терьер (полный комплекс+тримминг)","price":"6 500 ₽"},{"id":"17240552","name":"Стаффордширский бультерьер","price":"5 000 ₽"},{"id":"17240553","name":"Такса","price":"3 600 ₽"},{"id":"17240554","name":"Такса (полный комплекс+тримминг)","price":"5 600 ₽"},{"id":"17240555","name":"Такса длинношёрстая","price":"4 200 ₽"},{"id":"17240556","name":"Такса карликовая","price":"3 200 ₽"},{"id":"17240559","name":"Ти-Кап Пудель","price":"4 200 ₽"},{"id":"17240557","name":"Тибетский мастиф","price":"14 400 ₽"},{"id":"18852900","name":"Тибетский спаниель (Тибби) (Комплекс)","price":"4 900 ₽"},{"id":"17240558","name":"Тибетский терьер","price":"7 100 ₽"},{"id":"17240560","name":"Той пудель","price":"5 100 ₽"},{"id":"17240561","name":"Той терьер длинношерстный","price":"3 300 ₽"},{"id":"17240562","name":"Той терьер короткошерстный","price":"3 100 ₽"},{"id":"17240563","name":"Той фокстерьер","price":"4 300 ₽"},{"id":"17404832","name":"Уиппет (комплекс)","price":"4 000 ₽"},{"id":"17240564","name":"Фален","price":"4 200 ₽"},{"id":"17404862","name":"Фландрский бувье (комплекс)","price":"8 000 ₽"},{"id":"17404859","name":"Фландрский бувье тримминг (полный комплекс с триммингом)","price":"8 900 ₽"},{"id":"17240565","name":"Флаффи корги","price":"6 200 ₽"},{"id":"17240566","name":"Фокстерьер гладкошерстный","price":"4 500 ₽"},{"id":"17240567","name":"Фокстерьер жесткошерстный","price":"5 500 ₽"},{"id":"17240568","name":"Фокстерьер жесткошерстный (полный комплекс+тримминг)","price":"6 700 ₽"},{"id":"17240569","name":"Французский бульдог","price":"4 100 ₽"},{"id":"17240570","name":"Хаски","price":"7 400 ₽"},{"id":"17404871","name":"Ховаварт (комплекс)","price":"7 900 ₽"},{"id":"17240571","name":"Цвергшнауцер","price":"5 200 ₽"},{"id":"17240572","name":"Цвергшнауцер (полный компелкс+тримминг)","price":"6 300 ₽"},{"id":"17240573","name":"Цветная болонка","price":"5 400 ₽"},{"id":"17240574","name":"Чау-Чау","price":"8 000 ₽"},{"id":"17240575","name":"Черный терьер","price":"13 000 ₽"},{"id":"17240576","name":"Чешский терьер","price":"5 400 ₽"},{"id":"20246262","name":"Чирнеко дель Этна (сицилийская борзая) (комплекс)","price":"4 500 ₽"},{"id":"17240577","name":"Чихуахуа длинношерстный","price":"3 400 ₽"},{"id":"17240578","name":"Чихуахуа короткошерстный","price":"2 800 ₽"},{"id":"17240579","name":"Шарпей","price":"5 300 ₽"},{"id":"29859558","name":"Швейцарский зенненхунд","price":"6 900 ₽"},{"id":"17240580","name":"Шелти (Шетландская овчарка)","price":"6 000 ₽"},{"id":"17240581","name":"Ши-тцу","price":"5 300 ₽"},{"id":"17404802","name":"Шипперка (комплекс)","price":"4 600 ₽"},{"id":"17240582","name":"Шпиц","price":"5 000 ₽"},{"id":"17240583","name":"Эрдельтерьер","price":"6 600 ₽"},{"id":"17240584","name":"Эрдельтерьер (полный комплекс+тримминг)","price":"9 000 ₽"},{"id":"17404877","name":"Эстонская гончия (комплекс)","price":"4 700 ₽"},{"id":"17240585","name":"Ягдтерьер","price":"4 900 ₽"},{"id":"17240586","name":"Японский хин","price":"4 600 ₽"},{"id":"17240587","name":"Японский шпиц","price":"5 700 ₽"}],"cats":[{"id":"17240892","name":"Гигиенический комплекс для кошки","price":"5 200 ₽"},{"id":"17240894","name":"Гигиенический комплекс для Мейн-Куна","price":"6 400 ₽"},{"id":"17240893","name":"Гигиенический комплекс для сфинкса","price":"3 700 ₽"},{"id":"17240897","name":"Купание кошки","price":"3 300 ₽"},{"id":"17240896","name":"Купание Мейн-Куна","price":"4 000 ₽"},{"id":"17240898","name":"Экспресс линька для кошки","price":"3 100 ₽"},{"id":"17240895","name":"Экспресс линька для Мейн-Куна","price":"3 600 ₽"}]}</script>
 <script>
 (() => {
  const menu = document.querySelector('#mobile-menu');
@@ -247,15 +732,96 @@ h1 em{font-style:normal;font-weight:inherit}
  function closeMenu(){menu.close();}
  openButton.addEventListener('click',() => {menu.showModal();openButton.setAttribute('aria-expanded','true');document.documentElement.style.overflow='hidden';closeButton.focus();});
  closeButton.addEventListener('click',closeMenu);
- menu.addEventListener('close',() => {openButton.setAttribute('aria-expanded','false');document.documentElement.style.overflow='';openButton.focus();});
+ menu.addEventListener('close',() => {openButton.setAttribute('aria-expanded','false');document.documentElement.style.overflow='';openButton.focus({preventScroll:true});});
  menu.addEventListener('click',(event) => {if(event.target===menu){const box=menu.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)closeMenu();}});
  menu.querySelectorAll('a').forEach(link => link.addEventListener('click',closeMenu));
  window.matchMedia('(min-width:1100px)').addEventListener('change',event => {if(event.matches&&menu.open)closeMenu();});
  const reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)');
+ const worksViewer=document.querySelector('#works-viewer');
+ const workCards=[...document.querySelectorAll('.works-cover')];
+ const works=workCards.map(card=>({title:card.dataset.workTitle,breed:card.dataset.workBreed,before:card.dataset.workBefore,after:card.getAttribute('href')}));
+ works.push({title:'Комплекс для\u00a0шпица',breed:'Шпиц',master:'Кристина',before:'assets/works/spitz-kristina-before.webp',after:'assets/works/spitz-kristina-after.webp'});
+ works.push({title:'Комплекс для\u00a0мальтипу',breed:'Мальтипу',master:'Ярослава',before:'assets/works/maltipoo-yaroslava-before.webp',after:'assets/works/maltipoo-yaroslava-after.webp'});
+ works.push({title:'Комплекс для\u00a0цверга',breed:'Цверг',master:'Ярослава',before:'assets/works/zwerg-yaroslava-before.webp',after:'assets/works/zwerg-yaroslava-after.webp'});
+ works.push({title:'Экспресс-линька',breed:'Кошка',service:'экспресс-линьки',master:'Кристина',after:'assets/works/cat-shedding-kristina-after.webp'});
+ works.push({title:'Бельгийский гриффон',breed:'Бельгийский гриффон',service:'комплекса с\u00a0триммингом',serviceLabel:'Комплекс с\u00a0триммингом',master:'Елена',before:'assets/works/griffon-elena-before.webp',after:'assets/works/griffon-elena-after.webp'});
+ works.push({title:'Комплекс для\u00a0кошки',breed:'Кошка',master:'Дарья',after:'assets/works/cat-complex-darya-after.webp'});
+ const worksTitle=worksViewer.querySelector('#works-viewer-title');
+ const worksMaster=worksViewer.querySelector('#works-viewer-master');
+ const worksBefore=worksViewer.querySelector('[data-works-before]');
+ const worksAfter=worksViewer.querySelector('[data-works-after]');
+ const worksPair=worksViewer.querySelector('.works-pair');
+ const worksBeforeFigure=worksBefore.closest('figure');
+ const worksAfterCaption=worksAfter.closest('figure').querySelector('figcaption');
+ const worksPrev=worksViewer.querySelector('[data-works-prev]');
+ const worksNext=worksViewer.querySelector('[data-works-next]');
+ const worksCount=worksViewer.querySelector('[data-works-count]');
+ let currentWork=0;
+ let worksOpener=null;
+ let worksPreviousOverflow='';
+ function renderWork(index){
+  currentWork=Math.max(0,Math.min(index,works.length-1));
+  const work=works[currentWork];
+  worksTitle.textContent=work.title;
+  worksMaster.textContent=[work.serviceLabel,work.master?'Мастер: '+work.master:''].filter(Boolean).join(' · ');
+  worksMaster.hidden=!worksMaster.textContent;
+  const service=work.service||'комплексного ухода';
+  worksBefore.alt=work.before?work.breed+' до '+service:'';
+  worksAfter.alt=work.breed+' после '+service;
+  worksBeforeFigure.hidden=!work.before;
+  worksPair.classList.toggle('works-pair--single',!work.before);
+  worksAfterCaption.textContent=work.before?'После':'Результат';
+  if(work.before)worksBefore.src=work.before;
+  else worksBefore.removeAttribute('src');
+  worksAfter.src=work.after;
+  worksPrev.disabled=currentWork===0;
+  worksNext.disabled=currentWork===works.length-1;
+  worksCount.textContent=work.breed+' · '+(currentWork+1)+' из\u00a0'+works.length;
+  worksViewer.scrollTop=0;
+ }
+ function openWorks(event,index){
+  if(!worksViewer.showModal||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();
+  worksOpener=event.currentTarget;
+  renderWork(index);
+  worksPreviousOverflow=document.documentElement.style.overflow;
+  worksViewer.showModal();
+  document.documentElement.style.overflow='hidden';
+ }
+ workCards.forEach((card,index)=>card.addEventListener('click',event=>openWorks(event,index)));
+ document.querySelector('[data-works-all]').addEventListener('click',event=>openWorks(event,0));
+ worksViewer.querySelector('[data-works-close]').addEventListener('click',()=>worksViewer.close());
+ worksPrev.addEventListener('click',()=>{renderWork(currentWork-1);if(worksPrev.disabled)worksNext.focus({preventScroll:true});});
+ worksNext.addEventListener('click',()=>{renderWork(currentWork+1);if(worksNext.disabled)worksPrev.focus({preventScroll:true});});
+ worksViewer.addEventListener('keydown',event=>{
+  if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
+   event.preventDefault();
+   renderWork(currentWork+(event.key==='ArrowRight'?1:-1));
+   if(document.activeElement.disabled)(currentWork===0?worksNext:worksPrev).focus({preventScroll:true});
+  }
+ });
+ worksViewer.addEventListener('click',event=>{
+  if(event.target!==worksViewer)return;
+  const box=worksViewer.getBoundingClientRect();
+  if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)worksViewer.close();
+ });
+ worksViewer.addEventListener('close',()=>{
+  document.documentElement.style.overflow=worksPreviousOverflow;
+  if(worksOpener)worksOpener.focus({preventScroll:true});
+ });
+ const loyaltyPromotions=document.querySelector('.loyalty-promotions');
+ const loyaltyMobileView=window.matchMedia('(max-width:767px)');
+ let mobilePromotionsOpen=false;
+ function syncLoyaltyPromotions(){loyaltyPromotions.open=loyaltyMobileView.matches?mobilePromotionsOpen:true;}
+ loyaltyPromotions.addEventListener('toggle',()=>{if(loyaltyMobileView.matches)mobilePromotionsOpen=loyaltyPromotions.open;});
+ loyaltyMobileView.addEventListener('change',syncLoyaltyPromotions);
+ syncLoyaltyPromotions();
+
  const video=document.querySelector('#hero-video');
  const videoButton=document.querySelector('.video-control');
  video.muted=true;
  let userPaused=false;
+ let heroVisible=true;
  let videoRequested=false;
  let playPending=false;
  function renderVideoControl(){
@@ -266,7 +832,7 @@ h1 em{font-style:normal;font-weight:inherit}
  }
  function syncVideo(){
   videoButton.hidden=reducedMotion.matches;
-  if(reducedMotion.matches||document.hidden||userPaused){
+  if(reducedMotion.matches||document.hidden||!heroVisible||userPaused){
    video.pause();
    if(reducedMotion.matches)delete video.dataset.ready;
    return;
@@ -287,11 +853,91 @@ h1 em{font-style:normal;font-weight:inherit}
  video.addEventListener('error',()=>{delete video.dataset.ready;renderVideoControl();});
  reducedMotion.addEventListener('change',syncVideo);
  document.addEventListener('visibilitychange',syncVideo);
+ new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;syncVideo();},{threshold:.05}).observe(document.querySelector('.hero'));
  // Give the poster and page content priority over the background video.
  window.requestAnimationFrame(()=>window.requestAnimationFrame(syncVideo));
 
+
+
+ const reviewTrack=document.querySelector('#reviews-list'),reviewItems=[...reviewTrack.children],reviewPrev=document.querySelector('[data-review-prev]'),reviewNext=document.querySelector('[data-review-next]'),reviewStatus=document.querySelector('.reviews-carousel-status');let reviewIndex=1,reviewFrame=0,reviewWidth=0;
+ function setActiveReview(index){reviewIndex=Math.max(0,Math.min(reviewItems.length-1,index));reviewItems.forEach((item,i)=>{item.classList.toggle('is-active',i===reviewIndex);if(i===reviewIndex)item.setAttribute('aria-current','true');else item.removeAttribute('aria-current');});reviewPrev.disabled=reviewIndex===0;reviewNext.disabled=reviewIndex===reviewItems.length-1;const status=`Отзыв ${reviewIndex+1} из\u00a0${reviewItems.length}`;if(reviewStatus.textContent!==status)reviewStatus.textContent=status;}
+ function positionReview(index,behavior){index=Math.max(0,Math.min(reviewItems.length-1,index));const trackRect=reviewTrack.getBoundingClientRect(),itemRect=reviewItems[index].getBoundingClientRect();const left=reviewTrack.scrollLeft+itemRect.left-trackRect.left-(reviewTrack.clientWidth-itemRect.width)/2;setActiveReview(index);reviewTrack.scrollTo({left,behavior:behavior||(reducedMotion.matches?'instant':'smooth')});}
+ function updateReviewPosition(){reviewFrame=0;const center=reviewTrack.getBoundingClientRect().left+reviewTrack.clientWidth/2;let nearest=0,distance=Infinity;reviewItems.forEach((item,index)=>{const rect=item.getBoundingClientRect(),delta=Math.abs(rect.left+rect.width/2-center);if(delta<distance){distance=delta;nearest=index;}});setActiveReview(nearest);}
+ reviewPrev.addEventListener('click',()=>positionReview(reviewIndex-1));reviewNext.addEventListener('click',()=>positionReview(reviewIndex+1));reviewTrack.addEventListener('scroll',()=>{if(!reviewFrame)reviewFrame=requestAnimationFrame(updateReviewPosition);},{passive:true});reviewTrack.addEventListener('keydown',event=>{if(event.target!==reviewTrack)return;if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();positionReview(reviewIndex+(event.key==='ArrowRight'?1:-1));}else if(event.key==='Home'||event.key==='End'){event.preventDefault();positionReview(event.key==='Home'?0:reviewItems.length-1);}});reviewTrack.addEventListener('focusin',event=>{const item=event.target.closest('.review-item');if(item)positionReview(reviewItems.indexOf(item));});new ResizeObserver(()=>{if(reviewTrack.clientWidth!==reviewWidth){reviewWidth=reviewTrack.clientWidth;positionReview(reviewIndex,'instant');}}).observe(reviewTrack);positionReview(reviewIndex,'instant');
+
+ const popularTrack=document.querySelector('#popular-list'),popularItems=[...popularTrack.children],popularPrev=document.querySelector('[data-popular-prev]'),popularNext=document.querySelector('[data-popular-next]'),popularCount=document.querySelector('.popular-count');let popularFrame=0;
+ function updatePopular(){popularFrame=0;const all=popularTrack.scrollWidth<=popularTrack.clientWidth+2;popularTrack.tabIndex=all?-1:0;const bounds=popularTrack.getBoundingClientRect();const visible=popularItems.map((item,index)=>({index,rect:item.getBoundingClientRect()})).filter(item=>item.rect.left>=bounds.left-2&&item.rect.right<=bounds.right+2);const first=visible[0]?.index??Math.round(popularTrack.scrollLeft/(popularItems[0].getBoundingClientRect().width+parseFloat(getComputedStyle(popularTrack).gap)));const last=visible.at(-1)?.index??first;popularCount.textContent=(first===last?`${first+1}`:`${first+1}–${last+1}`)+' из\u00a0'+popularItems.length;popularPrev.disabled=popularTrack.scrollLeft<=2;popularNext.disabled=popularTrack.scrollLeft>=popularTrack.scrollWidth-popularTrack.clientWidth-2;}
+ function movePopular(direction){const step=popularItems[0].getBoundingClientRect().width+parseFloat(getComputedStyle(popularTrack).gap);popularTrack.scrollBy({left:step*direction,behavior:reducedMotion.matches?'auto':'smooth'});}
+ popularPrev.addEventListener('click',()=>movePopular(-1));popularNext.addEventListener('click',()=>movePopular(1));popularTrack.addEventListener('scroll',()=>{if(!popularFrame)popularFrame=requestAnimationFrame(updatePopular);},{passive:true});popularTrack.addEventListener('keydown',event=>{if(event.target!==popularTrack)return;if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();movePopular(event.key==='ArrowRight'?1:-1);}});new ResizeObserver(updatePopular).observe(popularTrack);updatePopular();
+ const quickDialog=document.querySelector('#quick-booking'),quickSelect=document.querySelector('#quick-service'),quickNext=document.querySelector('.quick-booking-next'),quickPrice=document.querySelector('.quick-booking-price'),quickChoices=JSON.parse(document.querySelector('#quick-booking-data').textContent);let quickOpener,quickKind;
+ const bindShortWords=value=>value.replace(/(?<![а-яёa-z])(в|к|с|у|о|и|а|но|на|по|до|из|за|от|не|для|без|при|или|как|что) /gi,'$1\u00a0');
+ function updateQuick(){const item=quickChoices[quickKind]?.find(item=>item.id===quickSelect.value);quickNext.setAttribute('aria-disabled',String(!item));quickNext.tabIndex=item?0:-1;quickPrice.textContent=item?item.price:'';quickNext.href=item?'https://n1254086.yclients.com/company/1146740/personal/select-services?o=s'+encodeURIComponent(item.id):'https://n1254086.yclients.com/company/1146740/personal/select-services?o=';}
+ document.querySelectorAll('[data-booking-kind]').forEach(link=>link.addEventListener('click',event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();quickOpener=link;quickKind=link.dataset.bookingKind;const cats=quickKind==='cats';document.querySelector('#quick-booking-title').textContent=cats?'Груминг кошек':'Груминг собак';document.querySelector('#quick-booking-description').textContent=cats?'Выберите подходящую процедуру для\u00a0вашего питомца.':'Выберите породу и\u00a0вариант ухода.';document.querySelector('.quick-booking-label').textContent=cats?'Процедура':'Порода и\u00a0вариант ухода';quickSelect.replaceChildren(new Option(cats?'Выбрать процедуру':'Выбрать породу',''),...quickChoices[quickKind].map(item=>new Option(bindShortWords(item.name)+'\u00a0— '+item.price,item.id)));updateQuick();quickDialog.showModal();document.documentElement.style.overflow='hidden';quickSelect.focus();}));
+ quickSelect.addEventListener('change',updateQuick);quickNext.addEventListener('click',event=>{if(quickNext.getAttribute('aria-disabled')==='true'){event.preventDefault();quickSelect.focus();}else quickDialog.close();});document.querySelector('.quick-booking-close').addEventListener('click',()=>quickDialog.close());quickDialog.addEventListener('close',()=>{document.documentElement.style.overflow='';quickOpener?.focus({preventScroll:true});});quickDialog.addEventListener('click',event=>{if(event.target===quickDialog){const r=quickDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)quickDialog.close();}});
+
+ const teamTrack=document.querySelector('#team-list');
+ const teamItems=Array.from(teamTrack.children);
+ const teamPrev=document.querySelector('[data-team-prev]');
+ const teamNext=document.querySelector('[data-team-next]');
+ const teamCount=document.querySelector('.team-count');
+ let carouselFrame=0;
+ function updateTeamNavigation(){
+  carouselFrame=0;
+  const trackBounds=teamTrack.getBoundingClientRect();
+  const visible=teamItems.map((el,index)=>({box:el.getBoundingClientRect(),index})).filter(item=>item.box.left>=trackBounds.left-2&&item.box.right<=trackBounds.right+2);
+  const first=visible[0]?.index??Math.round(teamTrack.scrollLeft/(teamItems[0].getBoundingClientRect().width+parseFloat(getComputedStyle(teamTrack).columnGap)));
+  const last=visible[visible.length-1]?.index??first;
+  const label=first===last?`${first+1} из\u00a0${teamItems.length}`:`${first+1}–${last+1} из\u00a0${teamItems.length}`;
+  if(teamCount.textContent!==label)teamCount.textContent=label;
+  const allVisible=teamTrack.scrollWidth<=teamTrack.clientWidth+2;
+  document.querySelector('.team-carousel').dataset.allVisible=String(allVisible);
+  teamTrack.tabIndex=allVisible?-1:0;
+  teamPrev.disabled=teamTrack.scrollLeft<=2;
+  teamNext.disabled=teamTrack.scrollLeft>=teamTrack.scrollWidth-teamTrack.clientWidth-2;
+ }
+ function moveTeam(direction){
+  const step=teamItems[0].getBoundingClientRect().width+parseFloat(getComputedStyle(teamTrack).columnGap);
+  teamTrack.scrollBy({left:direction*step,behavior:reducedMotion.matches?'auto':'smooth'});
+ }
+ teamPrev.addEventListener('click',()=>moveTeam(-1));
+ teamNext.addEventListener('click',()=>moveTeam(1));
+ teamTrack.addEventListener('scroll',()=>{if(!carouselFrame)carouselFrame=requestAnimationFrame(updateTeamNavigation);},{passive:true});
+ teamTrack.addEventListener('keydown',event=>{if(event.target!==teamTrack)return;if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();moveTeam(event.key==='ArrowRight'?1:-1);}});
+ new ResizeObserver(updateTeamNavigation).observe(teamTrack);
+ updateTeamNavigation();
+ let sectionMotionReady=false;
+ function initSectionMotion(){
+  if(sectionMotionReady||!window.gsap)return;
+  sectionMotionReady=true;
+  const scrollTargets='[data-team-reveal],[data-reviews-reveal],[data-popular-reveal],[data-loyalty-reveal],[data-works-reveal]';
+  const revealed=new WeakSet();
+  const activeTweens=new Set();
+  let observer;
+  function observeTeam(){
+   if(observer)observer.disconnect();
+   if(reducedMotion.matches){
+    activeTweens.forEach(tween=>{tween.progress(1);tween.kill();});activeTweens.clear();
+    gsap.set(scrollTargets,{clearProps:'transform,opacity,visibility'});
+    document.querySelectorAll('#team,#reviews,#popular-services,#loyalty,#before-after').forEach(section=>section.dataset.motion='reduced');
+    return;
+   }
+   document.querySelectorAll('#team,#reviews,#popular-services,#loyalty,#before-after').forEach(section=>section.dataset.motion='gsap');
+   observer=new IntersectionObserver(entries=>{
+    const entering=entries.filter(entry=>entry.isIntersecting&&!revealed.has(entry.target)).map(entry=>entry.target);
+    if(!entering.length)return;
+    entering.forEach(el=>{revealed.add(el);observer.unobserve(el);});
+    const tween=gsap.fromTo(entering,{y:20,opacity:0},{y:0,opacity:1,duration:.7,stagger:.12,ease:'power2.out',clearProps:'transform,opacity',onComplete:()=>activeTweens.delete(tween)});
+    activeTweens.add(tween);
+   },{threshold:.18});
+   document.querySelectorAll(scrollTargets).forEach(el=>{if(!revealed.has(el))observer.observe(el);});
+  }
+  reducedMotion.addEventListener('change',observeTeam);
+  observeTeam();
+ }
+
  let introPlayed=false;
  window.pesDukeIntro=() => {
+  initSectionMotion();
   if(introPlayed||!window.gsap)return;
   introPlayed=true;
   const reveal=()=>document.documentElement.classList.remove('intro-pending');
