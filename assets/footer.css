@@ -1,5 +1,5 @@
 /* Full-width footer with four columns in the established brand palette. */
-.site-footer{position:relative;z-index:1;margin-top:-32px;background:transparent;color:#234C34;padding-top:0;font:400 16px/1.6 Manrope,Arial,sans-serif;scroll-margin-top:24px}
+.site-footer{position:relative;z-index:1;margin-top:-56px;background:transparent;color:#234C34;padding-top:0;font:400 16px/1.6 Manrope,Arial,sans-serif;scroll-margin-top:24px}
 .footer-panel{background:#234C34;color:#F7F6F1;border:1px solid var(--page,#F7F6F1);border-bottom:0;border-radius:48px 48px 0 0}
 .footer-inner{width:calc(100% - var(--page-margin,var(--gutter,40px))*2);max-width:1440px;margin-inline:auto;padding:48px 0 24px;display:grid;grid-template-columns:1.05fr 1fr 1fr 1.2fr;gap:32px 48px}
 .footer-brand-column,.footer-column{min-width:0}
@@ -32,4 +32,4 @@
 @media(max-width:1099px){.footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 48px;padding-top:40px}.footer-brand-column{grid-column:1;grid-row:1}.footer-contact{grid-column:2;grid-row:1}.footer-brand-description{margin-bottom:20px}}
 @media(max-width:767px){.site-footer{padding-top:16px;scroll-margin-top:16px}.footer-panel{border-radius:32px 32px 0 0}.footer-inner{width:calc(100% - 40px);padding-top:32px;gap:28px 20px}.footer-brand-column{grid-column:1/-1;grid-row:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 20px}.footer-brand{width:144px}.footer-brand-description{margin:0;flex:1;min-width:120px;font-size:14px}.footer-booking{flex-basis:100%;justify-content:flex-start;border:0;border-radius:0;padding:4px 0;min-height:44px}.footer-column-title{margin:0 0 12px}.footer-links a{font-size:14px;line-height:1.5}.footer-contact{grid-column:1/-1;grid-row:auto;border-top:1px solid rgba(247,246,241,.25);padding-top:24px}.footer-address{font-size:16px}.footer-socials{gap:4px 24px}.footer-base{gap:4px 20px}.designer-credit{max-width:360px;padding-top:20px}.designer-credit>span:first-child{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.site-footer *, .site-footer *::before,.site-footer *::after{transition:none!important;animation:none!important}}
-@media(max-width:767px){.site-footer{margin-top:-24px;padding-top:0}}
+@media(max-width:767px){.site-footer{margin-top:-40px;padding-top:0}}
