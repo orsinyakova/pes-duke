@@ -26,7 +26,7 @@
 .designer-credit{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin:0 auto;padding:20px 20px 24px;font-size:14px;line-height:1.7;text-align:center;color:#234C34}
 .designer-credit>span{display:inline-flex;align-items:center;gap:8px}
 .designer-credit svg{width:16px;height:16px;fill:#8F563F;flex:none}
-.designer-credit a{font:400 18px/1.4 Anticva,Georgia,serif;letter-spacing:-.015em;padding:4px 0;border-bottom:1px solid #DDD8CF}
+.designer-credit a{font:400 14px/1.4 Anticva,Georgia,serif;letter-spacing:-.015em;padding:4px 0;border-bottom:1px solid #DDD8CF}
 .site-footer a{transition:color .2s,border-color .2s}
 .site-footer a:focus-visible{outline:3px solid #EAAB93;outline-offset:5px}
 .designer-credit a:focus-visible{outline-color:#8F563F}
