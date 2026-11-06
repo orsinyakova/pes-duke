@@ -1,0 +1,17 @@
+/* The original header remains in place; its inner row docks without shifting content. */
+html{scroll-padding-top:96px}
+.site-header--inner-page{height:112px}
+.site-header.is-scrolled .header-inner{position:fixed;z-index:15;inset:16px auto auto 50%;transform:translateX(-50%);width:min(960px,calc(100% - 32px));max-width:none;height:64px;min-height:64px;padding:8px 12px 8px 24px;gap:24px;border-radius:999px;background:var(--page,#F7F6F1);color:var(--forest,#234C34);box-shadow:0 8px 32px rgba(35,76,52,.09);animation:header-dock-in .28s ease-out both}
+.site-header.is-scrolled .brand{width:88px}
+.site-header.is-scrolled .desktop-nav{gap:24px;font-size:14px;line-height:1.5}
+.site-header.is-scrolled .desktop-nav a{white-space:nowrap}
+.site-header.is-scrolled .desktop-nav a:hover{color:var(--forest,#234C34);text-decoration:underline;text-underline-offset:5px}
+.site-header.is-scrolled .header-booking{display:inline-flex;flex:none;min-height:48px;padding:12px 20px;font-size:14px;line-height:1.5}
+.site-header.is-scrolled .menu-toggle{background:transparent;backdrop-filter:none;color:var(--forest,#234C34);border-color:var(--forest,#234C34)}
+.site-header.is-scrolled a:focus-visible,.site-header.is-scrolled button:focus-visible{outline:3px solid #8F563F;outline-offset:4px}
+.catalog-sidebar,.loyalty-column{top:112px}
+@keyframes header-dock-in{from{opacity:0;transform:translate(-50%,-10px)}to{opacity:1;transform:translate(-50%,0)}}
+@media(max-width:1099px){.site-header.is-scrolled .header-inner{max-width:720px;gap:16px}.site-header.is-scrolled .header-booking{margin-left:auto}}
+@media(max-width:767px){html{scroll-padding-top:88px}.site-header.is-scrolled .header-inner{top:12px;width:calc(100% - 24px);height:60px;min-height:60px;padding:6px 8px 6px 16px;gap:8px}.site-header.is-scrolled .brand{width:72px}.site-header.is-scrolled .header-booking{min-height:44px;padding:10px 12px;text-transform:none}.site-header.is-scrolled .header-booking-extra{display:none}.site-header.is-scrolled .menu-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;min-height:44px;margin-left:0;padding:11px;gap:0;font-size:0}.site-header.is-scrolled .menu-toggle svg{width:20px;height:20px}}
+@media(prefers-reduced-motion:reduce){.site-header.is-scrolled .header-inner{animation:none}}
+@media(max-width:767px){.site-header--inner-page{height:88px}}
