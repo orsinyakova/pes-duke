@@ -340,6 +340,19 @@ h1 em{font-style:normal;font-weight:inherit}
 @media(max-width:899px){.loyalty-feature{grid-template-columns:minmax(0,1fr);gap:40px}.loyalty-feature-copy{max-width:none}.duke-card-preview{width:min(100%,340px)}}
 @media(max-width:767px){.loyalty-promotions-toggle{display:flex}.loyalty-promotions[open] .loyalty-offers{margin-top:16px}.loyalty-section{padding-block:64px;scroll-margin-top:16px}.loyalty-header{margin-bottom:32px}.loyalty-heading{font-size:40px;line-height:1.15}.loyalty-intro{font-size:16px;margin-top:16px}.loyalty-feature{padding:24px;border-radius:20px;gap:32px;margin-bottom:16px}.loyalty-feature h3{font-size:44px;margin-top:20px}.loyalty-feature-description{font-size:16px}.loyalty-feature-actions{gap:12px;margin-top:24px}.loyalty-book,.loyalty-promotions-toggle{width:100%;padding-inline:16px}.loyalty-contact{margin-inline:auto}.loyalty-feature-note{margin-top:16px}.duke-card-preview{padding:20px;gap:20px;transform:none;border-radius:16px;aspect-ratio:auto;min-height:220px}.duke-card-preview img{width:112px}.duke-card-title{font-size:32px}.duke-card-bottom{gap:12px}.duke-card-mark{width:52px;height:52px;font-size:24px}.loyalty-offers{grid-template-columns:minmax(0,1fr);gap:16px}.loyalty-offer-card{padding:20px;border-radius:20px}.loyalty-offer-value{padding:20px;font-size:56px}.loyalty-offer h3{font-size:22px;margin-top:20px}.loyalty-offer p{font-size:16px}}
 
+/* Treats and toys available during a salon visit. */
+.shop-section{padding-block:80px;background:var(--page);color:var(--forest);scroll-margin-top:24px}
+.shop-shell{width:calc(100% - var(--page-margin)*2);max-width:1440px;margin-inline:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:64px}
+.shop-copy{min-width:0;max-width:600px}
+.shop-heading{margin:0;font:400 clamp(40px,4.4vw,64px)/1.12 Anticva,Georgia,serif;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance}
+.shop-description{max-width:42ch;margin:24px 0 0;font-size:18px;line-height:1.6;text-wrap:pretty}
+.shop-illustration{min-width:0;width:100%;max-width:640px;margin:0;justify-self:end}
+.shop-illustration img{display:block;width:100%;height:auto;aspect-ratio:3/2}
+@media(max-width:1099px){.shop-section{padding-block:64px}.shop-shell{gap:40px}.shop-heading{font-size:48px}}
+@media(max-width:899px){.shop-shell{grid-template-columns:minmax(0,1fr);gap:32px}.shop-copy{max-width:640px}.shop-illustration{max-width:520px;justify-self:center}}
+@media(max-width:767px){.shop-section{scroll-margin-top:16px}.shop-heading{font-size:40px;line-height:1.15}.shop-description{margin-top:16px;font-size:16px}.shop-illustration{max-width:440px}}
+@media(max-width:359px){.shop-heading{font-size:32px}}
+
 /* Reviews — one centered carousel, with bone-shaped rating marks. */
 .reviews-section{padding-block:96px;background:var(--forest);color:#F7F6F1;scroll-margin-top:24px;--review-olive:var(--forest);--review-muted:var(--muted-neutral);--review-surface:var(--page);--review-line:var(--neutral-line);--review-width:min(440px,calc(100vw - 96px))}
 .reviews-shell{width:calc(100% - var(--page-margin)*2);max-width:1440px;margin-inline:auto}
@@ -596,6 +609,17 @@ h1 em{font-style:normal;font-weight:inherit}
     <li class="loyalty-offer" data-loyalty-reveal><article class="loyalty-offer-card"><span class="loyalty-offer-value">500&nbsp;₽</span><h3>За&nbsp;отзыв</h3><p>Поделитесь своим мнением о&nbsp;салоне на&nbsp;Яндекс&nbsp;Картах и&nbsp;получите скидку 500&nbsp;₽ на&nbsp;наши услуги.</p><a class="loyalty-review-link" href="https://yandex.ru/maps/org/pyosduke/190293664931/reviews/" target="_blank" rel="noopener">Оставить отзыв<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article></li>
    </ul>
    </details>
+  </div>
+ </section>
+ <section class="shop-section" id="salon-shop" aria-labelledby="shop-title">
+  <div class="shop-shell">
+   <div class="shop-copy" data-shop-reveal>
+    <h2 class="shop-heading" id="shop-title">Лакомства и&nbsp;игрушки в&nbsp;салоне</h2>
+    <p class="shop-description">Во&nbsp;время визита в&nbsp;Pes Duke можно купить лакомства и&nbsp;игрушки для&nbsp;вашего питомца.</p>
+   </div>
+   <figure class="shop-illustration" data-shop-reveal>
+    <img src="assets/shop/treats-toys-v1.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Рисованная композиция: пакет лакомств, мячик и игрушка для кошек">
+   </figure>
   </div>
  </section>
  <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
@@ -915,7 +939,7 @@ h1 em{font-style:normal;font-weight:inherit}
  function initSectionMotion(){
   if(sectionMotionReady||!window.gsap)return;
   sectionMotionReady=true;
-  const scrollTargets='[data-team-reveal],[data-reviews-reveal],[data-popular-reveal],[data-loyalty-reveal],[data-works-reveal]';
+  const scrollTargets='[data-team-reveal],[data-reviews-reveal],[data-popular-reveal],[data-loyalty-reveal],[data-works-reveal],[data-shop-reveal]';
   const revealed=new WeakSet();
   const activeTweens=new Set();
   let observer;
@@ -924,10 +948,10 @@ h1 em{font-style:normal;font-weight:inherit}
    if(reducedMotion.matches){
     activeTweens.forEach(tween=>{tween.progress(1);tween.kill();});activeTweens.clear();
     gsap.set(scrollTargets,{clearProps:'transform,opacity,visibility'});
-    document.querySelectorAll('#team,#reviews,#popular-services,#loyalty,#before-after').forEach(section=>section.dataset.motion='reduced');
+    document.querySelectorAll('#team,#reviews,#popular-services,#loyalty,#before-after,#salon-shop').forEach(section=>section.dataset.motion='reduced');
     return;
    }
-   document.querySelectorAll('#team,#reviews,#popular-services,#loyalty,#before-after').forEach(section=>section.dataset.motion='gsap');
+   document.querySelectorAll('#team,#reviews,#popular-services,#loyalty,#before-after,#salon-shop').forEach(section=>section.dataset.motion='gsap');
    observer=new IntersectionObserver(entries=>{
     const entering=entries.filter(entry=>entry.isIntersecting&&!revealed.has(entry.target)).map(entry=>entry.target);
     if(!entering.length)return;
