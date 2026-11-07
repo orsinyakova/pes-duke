@@ -319,11 +319,8 @@ h1 em{font-style:normal;font-weight:inherit}
 .loyalty-book svg,.loyalty-contact svg,.loyalty-review-link svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .loyalty-contact,.loyalty-review-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:550;line-height:1.5;text-decoration:underline;text-underline-offset:5px}
 .loyalty-feature-note{max-width:52ch;font-size:14px;line-height:1.6;margin:24px 0 0}
-.duke-card-preview{width:min(100%,360px);justify-self:center;min-height:280px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:var(--card-surface);border:1px solid var(--forest);border-radius:24px;transform:rotate(3deg)}
-.duke-card-preview img{display:block;width:128px;height:auto}
-.duke-card-title{font:400 36px/1.1 Anticva,Georgia,serif;letter-spacing:-.02em}
-.duke-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:14px;line-height:1.5}
-.duke-card-mark{display:grid;place-items:center;flex:none;width:64px;height:64px;border:1px solid var(--forest);border-radius:50%;font:400 28px/1 Anticva,Georgia,serif}
+.duke-card-preview{width:min(100%,480px);justify-self:center;transform:rotate(3deg)}
+.duke-card-preview img{display:block;width:100%;height:auto}
 .loyalty-promotions{margin:0;min-width:0}
 .loyalty-promotions-toggle{display:none;list-style:none;cursor:pointer;background:var(--card-peach);border-color:var(--forest);color:var(--forest)}
 .loyalty-promotions-toggle::-webkit-details-marker{display:none}
@@ -345,8 +342,8 @@ h1 em{font-style:normal;font-weight:inherit}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.loyalty-book:hover{transform:translateY(-1px)}}
 @media(max-width:1199px){.loyalty-feature{padding:40px;gap:40px}.loyalty-offers{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1099px){.loyalty-section{padding-block:80px}.loyalty-heading{font-size:56px}}
-@media(max-width:899px){.loyalty-feature{grid-template-columns:minmax(0,1fr);gap:40px}.loyalty-feature-copy{max-width:none}.duke-card-preview{width:min(100%,340px)}}
-@media(max-width:767px){.loyalty-promotions-toggle{display:flex}.loyalty-promotions[open] .loyalty-offers{margin-top:16px}.loyalty-section{padding-block:64px;scroll-margin-top:16px}.loyalty-header{margin-bottom:32px}.loyalty-heading{font-size:40px;line-height:1.15}.loyalty-intro{font-size:16px;margin-top:16px}.loyalty-feature{padding:24px;border-radius:20px;gap:32px;margin-bottom:16px}.loyalty-feature h3{font-size:44px;margin-top:20px}.loyalty-feature-description{font-size:16px}.loyalty-feature-actions{gap:12px;margin-top:24px}.loyalty-book,.loyalty-promotions-toggle{width:100%;padding-inline:16px}.loyalty-contact{margin-inline:auto}.loyalty-feature-note{margin-top:16px}.duke-card-preview{padding:20px;gap:20px;transform:none;border-radius:16px;aspect-ratio:auto;min-height:220px}.duke-card-preview img{width:112px}.duke-card-title{font-size:32px}.duke-card-bottom{gap:12px}.duke-card-mark{width:52px;height:52px;font-size:24px}.loyalty-offers{grid-template-columns:minmax(0,1fr);gap:16px}.loyalty-offer-card{padding:20px;border-radius:20px}.loyalty-offer-value{padding:20px;font-size:56px}.loyalty-offer h3{font-size:22px;margin-top:20px}.loyalty-offer p{font-size:16px}}
+@media(max-width:899px){.loyalty-feature{grid-template-columns:minmax(0,1fr);gap:40px}.loyalty-feature-copy{max-width:none}.duke-card-preview{width:min(100%,480px)}}
+@media(max-width:767px){.loyalty-promotions-toggle{display:flex}.loyalty-promotions[open] .loyalty-offers{margin-top:16px}.loyalty-section{padding-block:64px;scroll-margin-top:16px}.loyalty-header{margin-bottom:32px}.loyalty-heading{font-size:40px;line-height:1.15}.loyalty-intro{font-size:16px;margin-top:16px}.loyalty-feature{padding:24px;border-radius:20px;gap:32px;margin-bottom:16px}.loyalty-feature h3{font-size:44px;margin-top:20px}.loyalty-feature-description{font-size:16px}.loyalty-feature-actions{gap:12px;margin-top:24px}.loyalty-book,.loyalty-promotions-toggle{width:100%;padding-inline:16px}.loyalty-contact{margin-inline:auto}.loyalty-feature-note{margin-top:16px}.duke-card-preview{transform:none}.loyalty-offers{grid-template-columns:minmax(0,1fr);gap:16px}.loyalty-offer-card{padding:20px;border-radius:20px}.loyalty-offer-value{padding:20px;font-size:56px}.loyalty-offer h3{font-size:22px;margin-top:20px}.loyalty-offer p{font-size:16px}}
 
 /* Treats and toys available during a salon visit. */
 .shop-section{padding-block:80px;background:var(--page);color:var(--forest);scroll-margin-top:24px}
@@ -602,9 +599,7 @@ h1 em{font-style:normal;font-weight:inherit}
      <p class="loyalty-feature-note">При&nbsp;использовании акционных предложений Duke Coin не&nbsp;начисляется.</p>
     </div>
     <div class="duke-card-preview" aria-hidden="true">
-     <img src="assets/logo-warm-v3.svg" width="5268" height="2183" loading="lazy" decoding="async" alt="">
-     <span class="duke-card-title">Duke Coin</span>
-     <div class="duke-card-bottom"><span>Накопительная<br>карта Pёs&nbsp;Duke</span><span class="duke-card-mark">5%</span></div>
+     <img src="assets/loyalty/duke-coin-card-v1.webp" srcset="assets/loyalty/duke-coin-card-v1-600.webp 600w, assets/loyalty/duke-coin-card-v1.webp 1200w" sizes="(max-width:767px) calc(100vw - 88px), (max-width:899px) 480px, (max-width:1199px) 40vw, 480px" width="1200" height="747" loading="lazy" decoding="async" alt="">
     </div>
    </div>
    <details class="loyalty-promotions" open>
