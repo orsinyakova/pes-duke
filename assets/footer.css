@@ -4,7 +4,7 @@
 .footer-inner{width:calc(100% - var(--page-margin,var(--gutter,40px))*2);max-width:1440px;margin-inline:auto;padding:32px 0 16px;display:grid;grid-template-columns:1fr 1fr 1fr 1.3fr;gap:24px 40px}
 .footer-brand-column,.footer-column{min-width:0}
 .footer-brand{display:inline-block;width:152px;max-width:100%;min-height:44px}
-.footer-brand img{display:block;width:100%;height:auto;filter:url(#brand-ink)}
+.footer-brand img{display:block;width:100%;height:auto}
 .footer-brand-description{font-size:16px;line-height:1.6;margin:12px 0}
 .footer-column-title{font:500 14px/1.6 Manrope,Arial,sans-serif;color:#B4BF9E;margin:0 0 12px}
 .footer-links{list-style:none;padding:0;margin:0}
