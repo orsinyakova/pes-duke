@@ -185,7 +185,15 @@ h1 em{font-style:normal;font-weight:inherit}
 .hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hero-media video{opacity:0}
 .hero-media video[data-ready="true"]{opacity:1}
-@media(max-width:767px){.hero-poster{height:360px;object-position:100% 50%}}
+@media(max-width:767px){
+ .hero{color:var(--page);--ink:var(--page);--muted:rgba(247,246,241,.94);--soft:rgba(247,246,241,.9)}
+ .hero-grid{padding-block:168px 48px}
+ .hero-media video,.hero-poster{width:100%;height:100%;object-position:85% 50%}
+ .hero-media:after{display:block;background:linear-gradient(180deg,rgba(38,33,29,.56) 0%,rgba(38,33,29,.76) 20%,rgba(38,33,29,.72) 65%,rgba(38,33,29,.82) 100%)}
+ .headline-accent{color:var(--peach)}
+ .button--secondary{border-color:var(--page);color:var(--page)}
+ .video-control{top:104px;right:20px;bottom:auto}
+}
 
 /* Popular services — open photographs and quiet typography, paired with the works section. */
 .popular-section{padding-block:96px;background:var(--page);color:var(--forest);scroll-margin-top:24px;--popular-ink:var(--forest)}
