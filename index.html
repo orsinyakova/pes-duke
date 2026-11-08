@@ -249,6 +249,7 @@ h1 em{font-style:normal;font-weight:inherit}
 .works-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.works-pair figure{min-width:0;margin:0}.works-pair figcaption{margin-bottom:12px;font-size:16px;font-weight:600;line-height:1.5}
 .works-pair img{display:block;width:100%;height:auto;max-height:58svh;aspect-ratio:3/4;object-fit:contain;background:var(--card-surface)}
 .works-pair--single{grid-template-columns:minmax(0,1fr);width:min(100%,43.5svh);margin-inline:auto}
+.works-load-feedback{margin-top:16px;font-size:14px;line-height:1.5;color:var(--muted-neutral)}.works-load-feedback p{margin:0}.works-retry{min-height:44px;margin-top:8px;padding:10px 16px;border:1px solid var(--forest);border-radius:999px;background:transparent;color:var(--forest);font:500 14px/1.5 Manrope,Arial,sans-serif}
 .works-viewer-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:24px}.works-viewer-count{margin:0;font-size:16px;font-variant-numeric:tabular-nums;line-height:1.5}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.works-cover:hover img{transform:scale(1.025)}.works-cover:hover .works-cover-label svg{transform:translateX(3px)}}
 @media(max-width:1099px){.works-section{padding-block:80px}.works-heading{font-size:clamp(48px,5.5vw,56px)}.works-header{gap:16px}.works-all{padding-inline:20px}.works-name{font-size:28px}}
@@ -400,6 +401,7 @@ h1 em{font-style:normal;font-weight:inherit}
 <script defer src="assets/header.js?v=dock-1"></script>
 <link rel="stylesheet" href="assets/cookies.css?v=notice-2">
 <script defer src="assets/cookies.js?v=notice-1"></script>
+<script defer src="assets/works-gallery.js?v=load-1"></script>
 
 <link rel="preload" as="image" href="assets/hero-poster-v2.jpg" fetchpriority="high">
 </head>
@@ -737,9 +739,13 @@ h1 em{font-style:normal;font-weight:inherit}
   <div><h2 class="works-viewer-title" id="works-viewer-title">До / после</h2><p class="works-viewer-master" id="works-viewer-master" hidden></p></div>
   <button class="works-icon-button" type="button" data-works-close aria-label="Закрыть галерею" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
  </div>
- <div class="works-pair">
+ <div class="works-pair" aria-busy="false" hidden>
   <figure><figcaption>До</figcaption><img data-works-before width="960" height="1280" decoding="async" alt=""></figure>
   <figure><figcaption>После</figcaption><img data-works-after width="960" height="1280" decoding="async" alt=""></figure>
+ </div>
+ <div class="works-load-feedback" hidden>
+  <p data-works-status role="status" aria-live="polite"></p>
+  <button class="works-retry" type="button" data-works-retry hidden>Попробовать ещё раз</button>
  </div>
  <div class="works-viewer-nav">
   <button class="works-icon-button" type="button" data-works-prev aria-label="Предыдущая работа"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6"/></svg></button>
@@ -760,78 +766,6 @@ h1 em{font-style:normal;font-weight:inherit}
  menu.querySelectorAll('a').forEach(link => link.addEventListener('click',closeMenu));
  window.matchMedia('(min-width:1100px)').addEventListener('change',event => {if(event.matches&&menu.open)closeMenu();});
  const reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)');
- const worksViewer=document.querySelector('#works-viewer');
- const workCards=[...document.querySelectorAll('.works-cover')];
- const works=workCards.map(card=>({title:card.dataset.workTitle,breed:card.dataset.workBreed,before:card.dataset.workBefore,after:card.getAttribute('href')}));
- works.push({title:'Комплекс для\u00a0шпица',breed:'Шпиц',master:'Кристина',before:'assets/works/spitz-kristina-before.webp',after:'assets/works/spitz-kristina-after.webp'});
- works.push({title:'Комплекс для\u00a0мальтипу',breed:'Мальтипу',before:'assets/works/maltipoo-yaroslava-before.webp',after:'assets/works/maltipoo-yaroslava-after.webp'});
- works.push({title:'Комплекс для\u00a0цверга',breed:'Цверг',before:'assets/works/zwerg-yaroslava-before.webp',after:'assets/works/zwerg-yaroslava-after.webp'});
- works.push({title:'Экспресс-линька',breed:'Кошка',service:'экспресс-линьки',master:'Кристина',after:'assets/works/cat-shedding-kristina-after.webp'});
- works.push({title:'Бельгийский гриффон',breed:'Бельгийский гриффон',service:'комплекса с\u00a0триммингом',serviceLabel:'Комплекс с\u00a0триммингом',master:'Елена',before:'assets/works/griffon-elena-before.webp',after:'assets/works/griffon-elena-after.webp'});
- works.push({title:'Комплекс для\u00a0кошки',breed:'Кошка',master:'Дарья',after:'assets/works/cat-complex-darya-after.webp'});
- const worksTitle=worksViewer.querySelector('#works-viewer-title');
- const worksMaster=worksViewer.querySelector('#works-viewer-master');
- const worksBefore=worksViewer.querySelector('[data-works-before]');
- const worksAfter=worksViewer.querySelector('[data-works-after]');
- const worksPair=worksViewer.querySelector('.works-pair');
- const worksBeforeFigure=worksBefore.closest('figure');
- const worksAfterCaption=worksAfter.closest('figure').querySelector('figcaption');
- const worksPrev=worksViewer.querySelector('[data-works-prev]');
- const worksNext=worksViewer.querySelector('[data-works-next]');
- const worksCount=worksViewer.querySelector('[data-works-count]');
- let currentWork=0;
- let worksOpener=null;
- let worksPreviousOverflow='';
- function renderWork(index){
-  currentWork=Math.max(0,Math.min(index,works.length-1));
-  const work=works[currentWork];
-  worksTitle.textContent=work.title;
-  worksMaster.textContent=[work.serviceLabel,work.master?'Мастер: '+work.master:''].filter(Boolean).join(' · ');
-  worksMaster.hidden=!worksMaster.textContent;
-  const service=work.service||'комплексного ухода';
-  worksBefore.alt=work.before?work.breed+' до '+service:'';
-  worksAfter.alt=work.breed+' после '+service;
-  worksBeforeFigure.hidden=!work.before;
-  worksPair.classList.toggle('works-pair--single',!work.before);
-  worksAfterCaption.textContent=work.before?'После':'Результат';
-  if(work.before)worksBefore.src=work.before;
-  else worksBefore.removeAttribute('src');
-  worksAfter.src=work.after;
-  worksPrev.disabled=currentWork===0;
-  worksNext.disabled=currentWork===works.length-1;
-  worksCount.textContent=work.breed+' · '+(currentWork+1)+' из\u00a0'+works.length;
-  worksViewer.scrollTop=0;
- }
- function openWorks(event,index){
-  if(!worksViewer.showModal||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
-  event.preventDefault();
-  worksOpener=event.currentTarget;
-  renderWork(index);
-  worksPreviousOverflow=document.documentElement.style.overflow;
-  worksViewer.showModal();
-  document.documentElement.style.overflow='hidden';
- }
- workCards.forEach((card,index)=>card.addEventListener('click',event=>openWorks(event,index)));
- document.querySelector('[data-works-all]').addEventListener('click',event=>openWorks(event,0));
- worksViewer.querySelector('[data-works-close]').addEventListener('click',()=>worksViewer.close());
- worksPrev.addEventListener('click',()=>{renderWork(currentWork-1);if(worksPrev.disabled)worksNext.focus({preventScroll:true});});
- worksNext.addEventListener('click',()=>{renderWork(currentWork+1);if(worksNext.disabled)worksPrev.focus({preventScroll:true});});
- worksViewer.addEventListener('keydown',event=>{
-  if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
-   event.preventDefault();
-   renderWork(currentWork+(event.key==='ArrowRight'?1:-1));
-   if(document.activeElement.disabled)(currentWork===0?worksNext:worksPrev).focus({preventScroll:true});
-  }
- });
- worksViewer.addEventListener('click',event=>{
-  if(event.target!==worksViewer)return;
-  const box=worksViewer.getBoundingClientRect();
-  if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)worksViewer.close();
- });
- worksViewer.addEventListener('close',()=>{
-  document.documentElement.style.overflow=worksPreviousOverflow;
-  if(worksOpener)worksOpener.focus({preventScroll:true});
- });
  const loyaltyPromotions=document.querySelector('.loyalty-promotions');
  const loyaltyMobileView=window.matchMedia('(max-width:767px)');
  let mobilePromotionsOpen=false;
