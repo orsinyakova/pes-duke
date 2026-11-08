@@ -34,7 +34,7 @@ function setup(){
  title.textContent='До / после';pair.hidden=true;feedback.hidden=true;retry.hidden=true;
  viewer.selectors={'#works-viewer-title':title,'#works-viewer-master':master,'[data-works-before]':before,'[data-works-after]':after,'.works-pair':pair,'[data-works-prev]':prev,'[data-works-next]':next,'[data-works-count]':count,'.works-load-feedback':feedback,'[data-works-status]':status,'[data-works-retry]':retry,'[data-works-close]':close};
  viewer.showModal=()=>{viewer.open=true;};viewer.close=()=>{viewer.open=false;viewer.fire('close');};
- const cards=['spitz','poodle','maltipoo'].map((name,index)=>{
+ const cards=['spitz','griffon-elena','maltipoo'].map((name,index)=>{
   const card=new Element();card.dataset={workTitle:'Case '+index,workBreed:name,workBefore:'assets/works/'+name+'-before.webp'};card.attrs.href='assets/works/'+name+'-after.webp';return card;
  });
  const all=new Element();document.querySelector=selector=>({'#works-viewer':viewer,'[data-works-all]':all}[selector]);document.querySelectorAll=()=>cards;
@@ -51,7 +51,7 @@ function setup(){
 test('a pair is displayed only after both images have decoded; neighbors are prefetched',async()=>{
  const h=setup();h.click(h.cards[0]);
  assert.equal(h.viewer.open,true);assert.equal(h.pair.hidden,true);
- assert.ok(h.requests.has('assets/works/poodle-before.webp'));
+ assert.ok(h.requests.has('assets/works/griffon-elena-before.webp'));
  const before=h.load('assets/works/spitz-before.webp',{decode:false});
  h.load('assets/works/spitz-after.webp');await tick();assert.equal(h.pair.hidden,true);
  before.decoded.resolve();await tick();
@@ -60,17 +60,17 @@ test('a pair is displayed only after both images have decoded; neighbors are pre
 
 test('the old pair and captions stay together until the next pair is ready',async()=>{
  const h=setup();h.click(h.cards[0]);h.loadWork('spitz');await tick();
- h.click(h.next);h.load('assets/works/poodle-after.webp');await tick();
+ h.click(h.next);h.load('assets/works/griffon-elena-after.webp');await tick();
  assert.equal(h.frame().title,'Case 0');assert.match(h.frame().before,/spitz-before/);assert.match(h.frame().after,/spitz-after/);
- h.load('assets/works/poodle-before.webp');await tick();
- assert.equal(h.frame().title,'Case 1');assert.match(h.frame().before,/poodle-before/);assert.match(h.frame().after,/poodle-after/);
+ h.load('assets/works/griffon-elena-before.webp');await tick();
+ assert.equal(h.frame().title,'Case 1');assert.match(h.frame().before,/griffon-elena-before/);assert.match(h.frame().after,/griffon-elena-after/);
 });
 
 test('rapid clicks and reversals ignore stale completions and reuse loaded images',async()=>{
  const h=setup();h.click(h.cards[0]);h.loadWork('spitz');await tick();
  h.click(h.next);h.click(h.next);h.loadWork('maltipoo');await tick();
  assert.equal(h.frame().title,'Case 2');
- h.loadWork('poodle');await tick();assert.equal(h.frame().title,'Case 2');
+ h.loadWork('griffon-elena');await tick();assert.equal(h.frame().title,'Case 2');
  h.click(h.prev);h.click(h.prev);await tick();
  assert.equal(h.frame().title,'Case 0');assert.equal(h.requests.get('assets/works/spitz-before.webp').length,1);
 });
@@ -85,10 +85,10 @@ test('closing invalidates pending navigation, including after reopening a differ
 
 test('failed requests preserve the current pair and can be retried',async()=>{
  const h=setup();h.click(h.cards[0]);h.loadWork('spitz');await tick();h.click(h.next);
- h.requests.get('assets/works/poodle-before.webp')[0].onerror();await tick();
+ h.requests.get('assets/works/griffon-elena-before.webp')[0].onerror();await tick();
  assert.equal(h.frame().title,'Case 0');assert.equal(h.retry.hidden,false);
- h.click(h.retry);assert.equal(h.document.activeElement,h.next);h.loadWork('poodle');await tick();
- assert.equal(h.frame().title,'Case 1');assert.equal(h.feedback.hidden,true);assert.equal(h.requests.get('assets/works/poodle-before.webp').length,2);
+ h.click(h.retry);assert.equal(h.document.activeElement,h.next);h.loadWork('griffon-elena');await tick();
+ assert.equal(h.frame().title,'Case 1');assert.equal(h.feedback.hidden,true);assert.equal(h.requests.get('assets/works/griffon-elena-before.webp').length,2);
 });
 
 test('single-result cases switch back to complete pairs without a stale image',async()=>{
@@ -96,8 +96,8 @@ test('single-result cases switch back to complete pairs without a stale image',a
  for(let i=0;i<6;i++)h.click(h.next);
  h.load('assets/works/cat-shedding-kristina-after.webp');await tick();
  assert.equal(h.frame().before,null);assert.match(h.frame().after,/cat-shedding/);
- h.click(h.next);h.loadWork('griffon-elena');await tick();
- assert.match(h.frame().before,/griffon-elena-before/);assert.match(h.frame().after,/griffon-elena-after/);
+ h.click(h.next);h.loadWork('poodle');await tick();
+ assert.match(h.frame().before,/poodle-before/);assert.match(h.frame().after,/poodle-after/);
  h.click(h.prev);await tick();assert.equal(h.frame().before,null);assert.match(h.frame().after,/cat-shedding/);
 });
 

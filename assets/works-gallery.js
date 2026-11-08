@@ -3,12 +3,12 @@
  if(!viewer||typeof viewer.showModal!=='function')return;
  const cards=[...document.querySelectorAll('.works-cover')];
  const all=document.querySelector('[data-works-all]');
- const works=cards.map(card=>({title:card.dataset.workTitle,breed:card.dataset.workBreed,before:card.dataset.workBefore,after:card.getAttribute('href')}));
+ const works=cards.map(card=>({title:card.dataset.workTitle,breed:card.dataset.workBreed,service:card.dataset.workService,serviceLabel:card.dataset.workServiceLabel,master:card.dataset.workMaster,before:card.dataset.workBefore,after:card.getAttribute('href')}));
  works.push({title:'Комплекс для\u00a0шпица',breed:'Шпиц',master:'Кристина',before:'assets/works/spitz-kristina-before.webp',after:'assets/works/spitz-kristina-after.webp'});
  works.push({title:'Комплекс для\u00a0мальтипу',breed:'Мальтипу',before:'assets/works/maltipoo-yaroslava-before.webp',after:'assets/works/maltipoo-yaroslava-after.webp'});
  works.push({title:'Комплекс для\u00a0цверга',breed:'Цверг',before:'assets/works/zwerg-yaroslava-before.webp',after:'assets/works/zwerg-yaroslava-after.webp'});
  works.push({title:'Экспресс-линька',breed:'Кошка',service:'экспресс-линьки',master:'Кристина',after:'assets/works/cat-shedding-kristina-after.webp'});
- works.push({title:'Бельгийский гриффон',breed:'Бельгийский гриффон',service:'комплекса с\u00a0триммингом',serviceLabel:'Комплекс с\u00a0триммингом',master:'Елена',before:'assets/works/griffon-elena-before.webp',after:'assets/works/griffon-elena-after.webp'});
+ works.push({title:'Комплекс для\u00a0пуделя',breed:'Пудель',before:'assets/works/poodle-before.webp',after:'assets/works/poodle-after.webp'});
  works.push({title:'Комплекс для\u00a0кошки',breed:'Кошка',master:'Дарья',after:'assets/works/cat-complex-darya-after.webp'});
  const title=viewer.querySelector('#works-viewer-title');
  const master=viewer.querySelector('#works-viewer-master');
