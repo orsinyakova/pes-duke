@@ -133,7 +133,7 @@ h1 em{font-style:normal;font-weight:inherit}
 @media(max-width:767px){.hero-media video{left:0;width:100%;height:360px;object-position:100% 50%}.hero-media:after{display:none}}
 
 
-/* Display typography: Anticva with individual Pilowlava glyphs. */
+/* Display typography: Anticva with inline outlines from the licensed Pilowlava font. */
 .header-inner,.hero-grid{width:calc(100% - var(--page-margin)*2);max-width:none}
 .header-inner{gap:32px}
 .desktop-nav{flex:1;justify-content:space-evenly;gap:24px;margin-left:0}
@@ -143,7 +143,9 @@ h1 em{font-style:normal;font-weight:inherit}
 .headline-line{display:block;white-space:nowrap}
 .headline-line + .headline-line{text-align:right;font-size:1.11em;margin-top:8px}
 .headline-word{display:inline-block;white-space:nowrap}
-.headline-accent{font-family:Pilowlava,serif;font-size:.84em;letter-spacing:-.025em;color:var(--peach);font-weight:400}
+.headline-accent{font-size:.84em;color:var(--peach);font-weight:400}
+.headline-accent svg{display:inline-block;height:.82em;vertical-align:-.02em;margin-inline-end:-.025em;fill:currentColor;overflow:visible}
+.headline-accent-text{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .hero-copy{grid-row:2;grid-column:1 / span 6}
 .hero-description{max-width:560px;margin:0}
 .hero-action{grid-row:3;grid-column:1 / span 6}
@@ -442,7 +444,7 @@ h1 em{font-style:normal;font-weight:inherit}
 <main id="main">
  <section class="hero" aria-labelledby="hero-title">
   <div class="container hero-grid">
-   <h1 id="hero-title"><span class="headline-line"><span class="headline-word" data-enter="left">Ст<span class="headline-accent">и</span>льный</span> <span class="headline-word" data-enter="right">и&nbsp;здор<span class="headline-accent">о</span>вый</span></span> <span class="headline-line"><span class="headline-word" data-enter="left">питомец</span> <span class="headline-word" data-enter="right">в&nbsp;PёsD<span class="headline-accent">u</span>ke</span></span></h1>
+   <h1 id="hero-title" aria-label="Стильный и здоровый питомец в PёsDuke"><span class="headline-line"><span class="headline-word" data-enter="left">Ст<span class="headline-accent"><span class="headline-accent-text">и</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -800 872 820" width="872" height="820" style="width:0.872em" aria-hidden="true" focusable="false"><path d="M79 -576L65 -127C62 -31 103 15 165 15C221 15 260 -6 310 -90L649 -658C690 -727 766 -678 740 -613L591 -241C544 -123 532 15 662 15C722 15 787 -20 791 -134L806 -552C811 -701 754 -775 631 -775C525 -775 460 -728 430 -613L329 -229C314 -172 255 -169 230 -219L137 -403C114 -448 120 -486 156 -506L275 -572C383 -632 360 -775 232 -775C94 -775 81 -638 79 -576Z"/></svg></span>льный</span> <span class="headline-word" data-enter="right">и&nbsp;здор<span class="headline-accent"><span class="headline-accent-text">о</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -800 829 820" width="829" height="820" style="width:0.829em" aria-hidden="true" focusable="false"><path d="M414 15C647 15 769 -120 769 -382C769 -644 647 -775 414 -775C182 -775 60 -644 60 -382C60 -120 182 15 414 15ZM695 -391L431 -72C393 -27 329 -51 313 -103L178 -534C149 -628 212 -680 292 -648L671 -496C719 -477 729 -432 695 -391Z"/></svg></span>вый</span></span> <span class="headline-line"><span class="headline-word" data-enter="left">питомец</span> <span class="headline-word" data-enter="right">в&nbsp;PёsD<span class="headline-accent"><span class="headline-accent-text">u</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -800 792 820" width="792" height="820" style="width:0.792em" aria-hidden="true" focusable="false"><path d="M403 -453L607 -232C630 -208 654 -162 624 -120C594 -78 541 -72 455 -116L171 -262C112 -292 98 -346 139 -407L262 -589C310 -660 284 -775 177 -775C101 -775 60 -730 60 -619L60 -295C60 -105 198 15 400 15C617 15 732 -75 732 -268L732 -643C732 -730 704 -775 632 -775C575 -775 541 -739 541 -691C541 -654 563 -628 607 -577L665 -510C685 -487 678 -470 667 -459C659 -451 641 -444 620 -461L504 -555C405 -635 323 -540 403 -453Z"/></svg></span>ke</span></span></h1>
    <figure class="hero-media" aria-hidden="true"><img class="hero-poster" src="assets/hero-poster-v2.jpg" alt="" width="1280" height="674" fetchpriority="high" decoding="async"><video id="hero-video" muted loop playsinline preload="none" poster="assets/hero-poster-v2.jpg"></video></figure>
    <button class="video-control" type="button" data-state="paused" aria-label="Включить фоновое видео" title="Включить фоновое видео"><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4 12 8-12 8Z"/></svg></button>
 
