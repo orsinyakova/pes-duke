@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pesdukegroom.ru/sitemap.xml
