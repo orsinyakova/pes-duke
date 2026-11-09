@@ -1,3 +1,11 @@
+/* Shared booking button on the home page and catalog. */
+.site-header .header-booking{display:inline-flex;align-items:center;justify-content:center;flex:none;gap:0;min-height:48px;padding:12px 24px;border:1px solid var(--olive,#67744C);border-radius:999px;background:var(--olive,#67744C);color:#FFF;font-size:14px;line-height:1.5;font-weight:700;letter-spacing:.015em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.site-header .header-booking:hover,.site-header .header-booking:active{background:var(--forest,#234C34);border-color:var(--forest,#234C34);color:#FFF}
+.site-header .header-booking:active{transform:none;scale:.98}
+@media(max-width:1279px){.site-header .header-booking{padding:12px 20px}}
+@media(max-width:767px){.site-header .header-booking{min-height:44px;padding:10px 16px;letter-spacing:0;text-transform:none}.site-header .header-booking-extra{display:none}.site-header .brand{width:112px}.site-header .header-inner{gap:12px}.site-header .menu-toggle{justify-content:center;flex:none;width:44px;height:44px;min-height:44px;margin-left:0;padding:11px;gap:0;font-size:0}.site-header .menu-toggle svg{width:20px;height:20px}}
+@media(max-width:359px){.site-header .header-booking{padding:10px 12px}.site-header .brand{width:96px}.site-header .header-inner{gap:8px}}
+@media(prefers-reduced-motion:reduce){.site-header .header-booking:active{scale:none}}
 /* The original header remains in place; its inner row docks without shifting content. */
 html{scroll-padding-top:96px}
 .site-header--inner-page{height:112px}
